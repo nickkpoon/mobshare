@@ -3,8 +3,8 @@
 Priority:
 
 1)
-login logout
 
+login logout
 
 offering page and seeking page
 
@@ -16,11 +16,11 @@ Rating System
 
 ride history
 
-Waitlist
-
 2)
 
 Mapping Radius
+
+Waitlist
 
 3)
 
