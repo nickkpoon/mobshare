@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "524714876085",
+    "firebase_url": "https://mobshare2-c56a3.firebaseio.com",
+    "project_id": "mobshare2-c56a3",
+    "storage_bucket": "mobshare2-c56a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524714876085:android:842b20b0f39583e7",
+        "android_client_info": {
+          "package_name": "edu.ucsb.cs.cs184.npoon.mobshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524714876085-3fkfuodopqjnbq868f97qa2t4t4pns30.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.ucsb.cs.cs184.npoon.mobshare",
+            "certificate_hash": "5a6aa58d060f971c80eb532f10cbff27b513fa0b"
+          }
+        },
+        {
+          "client_id": "524714876085-9bikko3kfgieumlvuogbrp1pno6vnapv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8LQvqxZZ3eiRBq-VgCFnZJtV0DWDMSVE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524714876085-9bikko3kfgieumlvuogbrp1pno6vnapv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
