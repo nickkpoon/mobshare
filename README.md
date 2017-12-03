@@ -1,5 +1,20 @@
 # mobshare
 
+User:
+
+Starting point
+
+End point
+
+Time
+
+Round Trip ?
+
+Cost
+
+User ID
+
+
 Priority:
 
 1)
