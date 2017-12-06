@@ -3,8 +3,9 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -20,8 +21,17 @@ public class LoginActivity extends AppCompatActivity  {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
             TextView loginLogo = (TextView)findViewById(R.id.login_logo);
-            Typeface logoFont = Typeface.createFromAsset(getAssets(), "fonts/simplifica.ttf");
+            Typeface logoFont = Typeface.createFromAsset(getAssets(), "fonts/raleway_semibold.ttf");
             loginLogo.setTypeface(logoFont);
+
+            Button loginButton = (Button) findViewById(R.id.login_button);
+            loginButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                }
+            });
 
             /*final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
