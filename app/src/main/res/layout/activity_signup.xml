@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="7dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:text="sign up"
             android:id="@+id/signup_button"
 
