@@ -49,6 +49,12 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
         </activity>
+
+        <activity
+            android:name=".newRideShare"
+            android:label="Post a New Ride!">
+        </activity>
+
     </application>
 
 </manifest>
