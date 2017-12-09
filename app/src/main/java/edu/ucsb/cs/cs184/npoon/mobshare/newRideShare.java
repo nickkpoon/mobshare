@@ -6,8 +6,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,9 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class newRideShare extends AppCompatActivity {
 
     EditText editTextDate;
-    EditText editTextUsername;
     EditText editTextPrice;
-    ToggleButton toggleTripType;
+    Spinner spinnerTripType;
     Button buttonSubmit;
 
     DatabaseReference databaserideShare;
@@ -34,11 +33,11 @@ public class newRideShare extends AppCompatActivity {
 
         databaserideShare = FirebaseDatabase.getInstance().getReference("rideShare");
 
-        editTextDate = (EditText) findViewById(R.id.editTextDate);
-        editTextPrice = (EditText) findViewById(R.id.editTextPrice);
-        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
+        editTextDate =      findViewById(R.id.editTextDate);
+        editTextPrice =     findViewById(R.id.editTextPrice);
 
-        toggleTripType = (ToggleButton) findViewById(R.id.toggleTripType);
+        spinnerTripType = findViewById(R.id.tripType);
+
         buttonSubmit = (Button) findViewById(R.id.buttonSubmit);
 
         buttonSubmit.setOnClickListener(new View.OnClickListener(){
@@ -53,16 +52,23 @@ public class newRideShare extends AppCompatActivity {
     }
 
     private void addRideShare(){
-        String username = editTextUsername.getText().toString().trim();
         String price = editTextPrice.getText().toString().trim();
         String date = editTextDate.getText().toString().trim();
-        String toggle = toggleTripType.getText().toString().trim();
+        String tripType = spinnerTripType.getSelectedItem().toString();
+        String[] spinnerCheck_array = getResources().getStringArray(R.array.items);
 
-        if((!TextUtils.isEmpty(username) && (!TextUtils.isEmpty(price)) && (!TextUtils.isEmpty(date)))){
-            String id = databaserideShare.push().getKey();
-            rideShare rS = new rideShare(username, price, date, toggle);
-            databaserideShare.child(id).setValue(rS);
-        }else{
+        if((!TextUtils.isEmpty(price)) && (!TextUtils.isEmpty(date))){
+
+            if(tripType.equals(spinnerCheck_array[0])){
+                Toast.makeText(this,"Please Select a type of Trip!", Toast.LENGTH_LONG).show();
+            }
+                    else {
+                String id = databaserideShare.push().getKey();
+                rideShare rS = new rideShare(tripType, price, date);
+                databaserideShare.child(id).setValue(rS);
+            }
+        }
+        else{
             Toast.makeText(
                     this,
                     "One or more values is empty, please make sure they are all filled out.",
@@ -72,24 +78,24 @@ public class newRideShare extends AppCompatActivity {
 
 public class rideShare {
 
-    private String rSusername;
+    private String rStripType;
     private String rSprice;
     private String rSdate;
-    private String rStoggle;
 
-    public rideShare(){
+    public rideShare() {
 
     }
 
-    public rideShare(String rSusername, String rSprice, String rSdate, String rStoggle){
+    public rideShare(String rStripType, String rSprice, String rSdate) {
 
-        this.rSusername = rSusername;
+        this.rStripType = rStripType;
         this.rSprice = rSprice;
         this.rSdate = rSdate;
-        this.rStoggle = rStoggle;
     }
 
-    public String getrSusername() { return rSusername; }
+    public String getrStripType() {
+        return rStripType;
+    }
 
     public String getrSprice() {
         return rSprice;
@@ -98,8 +104,5 @@ public class rideShare {
     public String getrSdate() {
         return rSdate;
     }
-
-    public String getrStoggle() { return rStoggle;
         }
     }
-}
