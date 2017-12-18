@@ -1,12 +1,16 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -19,10 +23,18 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class newRideShare extends AppCompatActivity {
 
+    double sourceLatitude = 41.008238;
+    double sourceLongitude = 28.978359;
+    double destinationLatitude = 37.983810;
+    double destinationLongitude = 23.727539;
+
+
     EditText editTextDate;
     EditText editTextPrice;
     Spinner spinnerTripType;
     Button buttonSubmit;
+    Button buttonLaunchMaps;
+    TextView textViewDest;
 
     DatabaseReference databaserideShare;
 
@@ -39,6 +51,20 @@ public class newRideShare extends AppCompatActivity {
         spinnerTripType = findViewById(R.id.tripType);
 
         buttonSubmit = (Button) findViewById(R.id.buttonSubmit);
+
+        buttonLaunchMaps = findViewById(R.id.buttonLaunchMaps);
+        textViewDest = findViewById(R.id.textViewDest);
+
+        buttonLaunchMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                launchMaps();
+
+                Log.d("ADebugTag", "Value: " + Double.toString(destinationLatitude));
+
+            }
+        });
 
         buttonSubmit.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,6 +100,14 @@ public class newRideShare extends AppCompatActivity {
                     "One or more values is empty, please make sure they are all filled out.",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void launchMaps(){
+
+        String uri = "http://maps.google.com/maps?saddr=" + sourceLatitude + "," + sourceLongitude + "&daddr=" + destinationLatitude + "," + destinationLongitude;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        intent.setPackage("com.google.android.apps.maps");
+        startActivity(intent);
     }
 
 public class rideShare {

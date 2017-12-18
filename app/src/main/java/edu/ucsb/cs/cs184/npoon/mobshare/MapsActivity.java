@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ToggleButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,13 +16,6 @@ import com.google.firebase.database.DatabaseReference;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-    EditText editTextDate;
-    EditText editTextUsername;
-    EditText editTextPrice;
-    ToggleButton toggleTripType;
-    Button buttonSubmit;
-
 
     private GoogleMap mMap;
 
@@ -45,7 +35,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    startActivity(new Intent(MapsActivity.this, newRideShare.class));
+                    startActivity(new Intent(MapsActivity.this, listingPage.class));
                 }
             }
         );

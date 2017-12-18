@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">mobshare</string>
     <string name="title_activity_maps">Map</string>
+    <string name="textViewDest">Destination</string>
+    <string name="chooseDest">Click Here To Select Destination</string>
     <string-array name="items">
         <item>Select Type of Trip:</item>
         <item>One Way</item>
