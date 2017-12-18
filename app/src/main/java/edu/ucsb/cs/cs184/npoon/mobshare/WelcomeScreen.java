@@ -39,6 +39,9 @@ public class WelcomeScreen extends AppCompatActivity {
         });
 
 
+
+
+
         /*final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">mobshare</string>
     <string name="title_activity_maps">Map</string>
+    <string name="open_drawer">open</string>
+    <string name="close_drawer">close</string>
+
 </resources>

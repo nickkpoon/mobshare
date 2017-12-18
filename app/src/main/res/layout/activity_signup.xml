@@ -45,7 +45,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/colorWhite"
             android:inputType="textEmailAddress"
-            android:text="Email Address"
+            android:hint="Email Address"
             android:textColor="@color/colorFadedWhite"
             android:textSize="15sp"
             android:padding="7dp"
@@ -60,11 +60,29 @@
             android:layout_marginBottom="10dp"
             android:background="@color/colorWhite"
             android:inputType="textPassword"
-            android:text="Password"
+            android:hint="Password"
             android:textColor="@color/colorFadedWhite"
             android:textSize="15sp"
             android:padding="7dp"
             app:layout_constraintVertical_bias="0.5" />
+
+        <EditText
+            android:id="@+id/phonenum"
+            android:layout_width="250sp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorWhite"
+            android:inputType="phone"
+            android:hint="Phone number"
+            android:textColor="@color/colorFadedWhite"
+            android:textSize="15sp"
+            android:padding="7dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+
+
 
         <Button
             android:layout_width="255sp"

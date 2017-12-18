@@ -64,6 +64,13 @@
         </activity>
 
         <activity
+            android:name=".MainActivity"
+            android:label="Main"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
             android:name=".newRideShare"
             android:label="Post a New Ride!">
         </activity>
