@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profile_button"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="Profile" />
+        <item
+            android:id="@+id/listings_button"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="Listings" />
+        <item
+            android:id="@+id/history_button"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="Ride History" />
+        <item
+            android:id="@+id/newRide_button"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="Create Listing" />
+        <item
+            android:id="@+id/signOut_button"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="Sign out" />
+    </group>
+
+
+</menu>
