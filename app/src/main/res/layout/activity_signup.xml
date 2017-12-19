@@ -73,7 +73,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:inputType="phone"
+            android:inputType="text"
             android:hint="Name"
             android:textColor="@color/colorWhite"
             android:background="@drawable/button_background"

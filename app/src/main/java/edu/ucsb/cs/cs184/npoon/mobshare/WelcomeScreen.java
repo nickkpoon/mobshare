@@ -7,11 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 /**
  * Created by nickkpoon on 12/4/17.
  */
 
 public class WelcomeScreen extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,7 +43,7 @@ public class WelcomeScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        mAuth = FirebaseAuth.getInstance();
 
 
 
@@ -52,5 +58,15 @@ public class WelcomeScreen extends AppCompatActivity {
                 finish();
             }
         }, 2000);*/
+    }
+
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            Intent intent = new Intent(WelcomeScreen.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }
