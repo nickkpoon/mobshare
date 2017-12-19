@@ -91,7 +91,9 @@
             android:padding="7dp"
             android:textSize="12sp"
             android:text="sign up"
+            android:textColor="@color/colorWhite"
             android:id="@+id/signup_button"
+            android:background="@drawable/button_background"
 
             />
     </LinearLayout>
