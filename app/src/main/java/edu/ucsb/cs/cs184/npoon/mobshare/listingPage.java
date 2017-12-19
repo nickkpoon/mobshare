@@ -20,8 +20,8 @@ public class listingPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listingspage);
-
-       RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        initializeData();
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         //step 2
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
