@@ -37,46 +37,63 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <EditText
-            android:id="@+id/login"
+            android:id="@+id/signup_email"
             android:layout_width="250sp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorWhite"
             android:inputType="textEmailAddress"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_background"
             android:hint="Email Address"
-            android:textColor="@color/colorFadedWhite"
             android:textSize="15sp"
             android:padding="7dp"
             app:layout_constraintVertical_bias="0.5" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/signup_password"
             android:layout_width="250sp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorWhite"
             android:inputType="textPassword"
             android:hint="Password"
-            android:textColor="@color/colorFadedWhite"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_background"
             android:textSize="15sp"
             android:padding="7dp"
             app:layout_constraintVertical_bias="0.5" />
 
         <EditText
-            android:id="@+id/phonenum"
+            android:id="@+id/signup_name"
             android:layout_width="250sp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorWhite"
+            android:inputType="phone"
+            android:hint="Name"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_background"
+            android:textSize="15sp"
+            android:padding="7dp"
+            app:layout_constraintVertical_bias="0.5" />
+
+
+
+        <EditText
+            android:id="@+id/signup_phone"
+            android:layout_width="250sp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:inputType="phone"
             android:hint="Phone number"
-            android:textColor="@color/colorFadedWhite"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_background"
             android:textSize="15sp"
             android:padding="7dp"
             app:layout_constraintVertical_bias="0.5" />
@@ -85,13 +102,16 @@
 
 
         <Button
-            android:layout_width="255sp"
-            android:layout_height="wrap_content"
+            android:layout_width="250sp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:padding="7dp"
             android:textSize="12sp"
             android:text="sign up"
+            android:textColor="@color/colorWhite"
             android:id="@+id/signup_button"
+            android:background="@drawable/button_background"
 
             />
     </LinearLayout>
