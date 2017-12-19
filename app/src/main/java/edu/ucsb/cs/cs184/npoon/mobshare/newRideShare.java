@@ -90,6 +90,7 @@ public class newRideShare extends Fragment {
     double destinationLatitude = 37.983810;
     double destinationLongitude = 23.727539;
 
+
     EditText editTextDate;
     EditText editTextPrice;
     Spinner spinnerTripType;

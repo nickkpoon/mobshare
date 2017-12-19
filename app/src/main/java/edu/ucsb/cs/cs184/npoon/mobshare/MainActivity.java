@@ -126,8 +126,15 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.listings_button)
         {
             Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, listingPage.class);
-            startActivity(intent);
+
+            Fragment newFragment;
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            newFragment = new listingPage();
+            transaction.replace(R.id.fragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+//            Intent intent = new Intent(MainActivity.this, listingPage.class);
+//            startActivity(intent);
 
 
         }
