@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class listingsAdapter extends RecyclerView.Adapter<myViewHolder> {
 
-    private List<listingItem> listItems;
+    private List<listingItem> listItems = new ArrayList<listingItem>();
 
     public listingsAdapter(List<listingItem> rShare) {
     this.listItems = rShare;

@@ -1,5 +1,7 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -8,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -137,8 +138,16 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.newRide_button)
         {
             Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, newRideShare.class);
-            startActivity(intent);
+
+            Fragment newFragment;
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            newFragment = new newRideShare();
+            transaction.replace(R.id.fragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
+//          Intent intent = new Intent(MainActivity.this, newRideShare.class);
+//          startActivity(intent);
 
         }
         else if (id == R.id.signOut_button)

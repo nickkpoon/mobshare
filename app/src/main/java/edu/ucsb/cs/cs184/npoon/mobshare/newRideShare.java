@@ -1,12 +1,14 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -21,6 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 
 
+/*
+
+//Old code as an activity, DO NOT DELETE!!!
 public class newRideShare extends AppCompatActivity {
 
     double sourceLatitude = 41.008238;
@@ -76,6 +81,68 @@ public class newRideShare extends AppCompatActivity {
 
 
     }
+*/
+
+public class newRideShare extends Fragment {
+
+    double sourceLatitude = 41.008238;
+    double sourceLongitude = 28.978359;
+    double destinationLatitude = 37.983810;
+    double destinationLongitude = 23.727539;
+
+    EditText editTextDate;
+    EditText editTextPrice;
+    Spinner spinnerTripType;
+    Button buttonSubmit;
+    Button buttonLaunchMaps;
+    TextView textViewDest;
+
+    DatabaseReference databaserideShare;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_add_rideshare, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        databaserideShare = FirebaseDatabase.getInstance().getReference("rideShare");
+
+        View v = getView();
+        editTextDate =      v.findViewById(R.id.editTextDate);
+        editTextPrice =     v.findViewById(R.id.editTextPrice);
+
+        spinnerTripType =   v.findViewById(R.id.tripType);
+
+        buttonSubmit =      v.findViewById(R.id.buttonSubmit);
+
+        buttonLaunchMaps =  v.findViewById(R.id.buttonLaunchMaps);
+        textViewDest =      v.findViewById(R.id.textViewDest);
+
+        buttonLaunchMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                launchMaps();
+
+                Log.d("ADebugTag", "Value: " + Double.toString(destinationLatitude));
+
+            }
+        });
+
+        buttonSubmit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                addRideShare();
+            }
+
+        });
+
+    }
+
+
 
     private void addRideShare(){
         String username = "Bob";
@@ -87,7 +154,7 @@ public class newRideShare extends AppCompatActivity {
         if((!TextUtils.isEmpty(price)) && (!TextUtils.isEmpty(date))){
 
             if(tripType.equals(spinnerCheck_array[0])){
-                Toast.makeText(this,"Please Select a type of Trip!", Toast.LENGTH_LONG).show();
+                Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),"Please Select a type of Trip!", Toast.LENGTH_LONG).show();
             }
                     else {
                 String id = databaserideShare.push().getKey();
@@ -96,8 +163,7 @@ public class newRideShare extends AppCompatActivity {
             }
         }
         else{
-            Toast.makeText(
-                    this,
+            Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
                     "One or more values is empty, please make sure they are all filled out.",
                     Toast.LENGTH_LONG).show();
         }

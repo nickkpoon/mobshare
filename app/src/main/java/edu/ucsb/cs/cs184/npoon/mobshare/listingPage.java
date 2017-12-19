@@ -23,7 +23,6 @@ public class listingPage extends AppCompatActivity {
         initializeData();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        //step 2
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         listingsAdapter adapter = new listingsAdapter(listItems);
