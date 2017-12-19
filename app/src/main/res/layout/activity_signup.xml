@@ -43,10 +43,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorWhite"
             android:inputType="textEmailAddress"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_background"
             android:hint="Email Address"
-            android:textColor="@color/colorFadedWhite"
             android:textSize="15sp"
             android:padding="7dp"
             app:layout_constraintVertical_bias="0.5" />
@@ -58,10 +58,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorWhite"
             android:inputType="textPassword"
             android:hint="Password"
-            android:textColor="@color/colorFadedWhite"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_background"
             android:textSize="15sp"
             android:padding="7dp"
             app:layout_constraintVertical_bias="0.5" />
@@ -73,10 +73,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorWhite"
             android:inputType="phone"
             android:hint="Phone number"
-            android:textColor="@color/colorFadedWhite"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_background"
             android:textSize="15sp"
             android:padding="7dp"
             app:layout_constraintVertical_bias="0.5" />
@@ -85,9 +85,10 @@
 
 
         <Button
-            android:layout_width="255sp"
-            android:layout_height="wrap_content"
+            android:layout_width="250sp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:padding="7dp"
             android:textSize="12sp"
             android:text="sign up"
