@@ -1,10 +1,7 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,14 +9,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.DatabaseReference;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
-    DatabaseReference databaserideShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +26,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    startActivity(new Intent(MapsActivity.this, listingPage.class));
-                }
-            }
-        );
     }
 
 

@@ -1,14 +1,17 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
-import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 
+import com.google.firebase.database.DatabaseReference;
 import com.mindorks.placeholderview.PlaceHolderView;
 
 /**
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private PlaceHolderView mGalleryView;
     private Button mButton;
+
+    DatabaseReference databaserideShare;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupDrawer();
+
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View view) {
+                                       startActivity(new Intent(MainActivity.this, listingPage.class));
+                                   }
+                               }
+        );
     }
 
     private void setupDrawer(){

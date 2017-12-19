@@ -5,38 +5,39 @@
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:padding="@dimen/cardview_compat_inset_shadow"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/cardview_compat_inset_shadow">
 
             <TextView
                 android:id="@+id/textViewUsername"
-                android:text="Username"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Username" />
 
             <TextView
                 android:id="@+id/textViewTripType"
-                android:text="Type of Trip"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Type of Trip" />
 
             <TextView
                 android:id="@+id/textViewPrice"
-                android:text="Price"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Price" />
 
             <TextView
                 android:id="@+id/textViewDate"
-                android:text="Date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Date" />
 
 
         </LinearLayout>

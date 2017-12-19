@@ -78,6 +78,7 @@ public class newRideShare extends AppCompatActivity {
     }
 
     private void addRideShare(){
+        String username = "Bob";
         String price = editTextPrice.getText().toString().trim();
         String date = editTextDate.getText().toString().trim();
         String tripType = spinnerTripType.getSelectedItem().toString();
@@ -90,7 +91,7 @@ public class newRideShare extends AppCompatActivity {
             }
                     else {
                 String id = databaserideShare.push().getKey();
-                rideShare rS = new rideShare(tripType, price, date);
+                rideShare rS = new rideShare(username, tripType, price, date);
                 databaserideShare.child(id).setValue(rS);
             }
         }
@@ -112,6 +113,7 @@ public class newRideShare extends AppCompatActivity {
 
 public class rideShare {
 
+    private String rSUsername;
     private String rStripType;
     private String rSprice;
     private String rSdate;
@@ -120,12 +122,15 @@ public class rideShare {
 
     }
 
-    public rideShare(String rStripType, String rSprice, String rSdate) {
+    public rideShare(String rSUsername, String rStripType, String rSprice, String rSdate) {
 
+        this.rSUsername = rSUsername;
         this.rStripType = rStripType;
         this.rSprice = rSprice;
         this.rSdate = rSdate;
     }
+
+    public String getrSUsername() { return rSUsername; }
 
     public String getrStripType() {
         return rStripType;
