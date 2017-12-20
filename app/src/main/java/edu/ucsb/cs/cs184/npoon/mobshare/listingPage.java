@@ -84,14 +84,22 @@ public class listingPage extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    /*String NameValue = snapshot.child("Name").getValue(String.class);
-                    String Price = snapshot.child("Price").getValue(String.class);
-                    String Type = snapshot.child("Trip Type").getValue(String.class);
-                    String Date = snapshot.child("Date").getValue(String.class);
-                    String Destination = "LA";
-                    String Phone = snapshot.child("Phone Number").getValue(String.class);*/
+                    Log.d("FB item PULL", "PULLED!");
+
                     listingItem newItem = snapshot.getValue(listingItem.class);
-                    listItems.add(newItem);
+
+                    String NameValue = newItem.getName();
+                    Log.d("NAME", NameValue);
+
+                    String Price = newItem.getPrice();
+                    String Type = newItem.getTripType();
+                    String Date = newItem.getDate();
+                    Log.d("DATE:  ", Date);
+
+                    String Destination = "LA";
+                    String Phone = newItem.getPhone();
+
+                    //listItems.add(newItem);
 
                 }
             }
