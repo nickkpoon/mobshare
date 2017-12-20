@@ -15,8 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Julio on 12/3/2017.
@@ -97,8 +101,11 @@ public class newRideShare extends Fragment {
     Button buttonSubmit;
     Button buttonLaunchMaps;
     TextView textViewDest;
+    private FirebaseAuth mAuth;
 
     DatabaseReference databaserideShare;
+    FirebaseDatabase User;
+    DatabaseReference UserRef;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -110,6 +117,8 @@ public class newRideShare extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         databaserideShare = FirebaseDatabase.getInstance().getReference("rideShare");
+        User = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         View v = getView();
         editTextDate =      v.findViewById(R.id.editTextDate);
@@ -146,21 +155,65 @@ public class newRideShare extends Fragment {
 
 
     private void addRideShare(){
-        String username = "Bob";
-        String price = editTextPrice.getText().toString().trim();
-        String date = editTextDate.getText().toString().trim();
-        String tripType = spinnerTripType.getSelectedItem().toString();
+        final String price = editTextPrice.getText().toString().trim();
+        final String date = editTextDate.getText().toString().trim();
+        final String tripType = spinnerTripType.getSelectedItem().toString();
         String[] spinnerCheck_array = getResources().getStringArray(R.array.items);
+        UserRef = User.getReference("Users").child(mAuth.getUid().toString());
+        UserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String NameValue = dataSnapshot.child("Name").getValue(String.class);
+                String UNameValue = dataSnapshot.child("UserName").getValue(String.class);
+                String PhoneValue = dataSnapshot.child("Phone").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
 
         if((!TextUtils.isEmpty(price)) && (!TextUtils.isEmpty(date))){
 
             if(tripType.equals(spinnerCheck_array[0])){
                 Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),"Please Select a type of Trip!", Toast.LENGTH_LONG).show();
             }
-                    else {
-                String id = databaserideShare.push().getKey();
-                rideShare rS = new rideShare(username, tripType, price, date);
-                databaserideShare.child(id).setValue(rS);
+            else {
+                final String id = databaserideShare.push().getKey();
+
+                UserRef = User.getReference("Users").child(mAuth.getUid().toString());
+                UserRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // This method is called once with the initial value and again
+                        // whenever data at this location is updated.
+                        String NameValue = dataSnapshot.child("Name").getValue(String.class);
+                        String UNameValue = dataSnapshot.child("UserName").getValue(String.class);
+                        String PhoneValue = dataSnapshot.child("Phone").getValue(String.class);
+                        rideShare rS = new rideShare(UNameValue, tripType, price, date, PhoneValue, NameValue);
+                        databaserideShare.child(id).child("Username").setValue(UNameValue);
+                        databaserideShare.child(id).child("Name").setValue(NameValue);
+                        databaserideShare.child(id).child("Trip Type").setValue(tripType);
+                        databaserideShare.child(id).child("Price").setValue(price);
+                        databaserideShare.child(id).child("Date").setValue(date);
+                        databaserideShare.child(id).child("Phone Number").setValue(PhoneValue);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        //Log.w(TAG, "Failed to read value.", error.toException());
+                    }
+                });
+
+                //rideShare rS = new rideShare(username, tripType, price, date, );
+                //databaserideShare.child(id).setValue(rS);
             }
         }
         else{
@@ -178,37 +231,48 @@ public class newRideShare extends Fragment {
         startActivity(intent);
     }
 
-public class rideShare {
+    public class rideShare {
 
-    private String rSUsername;
-    private String rStripType;
-    private String rSprice;
-    private String rSdate;
+        private String rSUsername;
+        private String rStripType;
+        private String rSprice;
+        private String rSdate;
+        private String rSRealName;
+        private String rSPhone;
 
-    public rideShare() {
+        public rideShare() {
 
-    }
+        }
 
-    public rideShare(String rSUsername, String rStripType, String rSprice, String rSdate) {
+        public rideShare(String rSUsername, String rStripType, String rSprice, String rSdate, String rSPhone, String rSRealName) {
 
-        this.rSUsername = rSUsername;
-        this.rStripType = rStripType;
-        this.rSprice = rSprice;
-        this.rSdate = rSdate;
-    }
+            this.rSUsername = rSUsername;
+            this.rStripType = rStripType;
+            this.rSprice = rSprice;
+            this.rSdate = rSdate;
+            this.rSPhone = rSPhone;
+            this.rSRealName = rSRealName;
+        }
 
-    public String getrSUsername() { return rSUsername; }
+        public String getrSUsername() { return rSUsername; }
 
-    public String getrStripType() {
-        return rStripType;
-    }
+        public String getrStripType() {
+            return rStripType;
+        }
 
-    public String getrSprice() {
-        return rSprice;
-    }
+        public String getrSprice() {
+            return rSprice;
+        }
 
-    public String getrSdate() {
-        return rSdate;
-    }
+        public String getrSdate() {
+            return rSdate;
+        }
+
+        public String getrSRealName() {
+            return rSRealName;
+        }
+        public String getrSPhone() {
+            return rSPhone;
         }
     }
+}
