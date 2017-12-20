@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity
 
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
+    private ArrayList<historyItem> histItems = new ArrayList<historyItem>();
 
 
     @Override
@@ -202,7 +202,20 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.history_button)
         {
-            Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+            Fragment newFragment;
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("CardList", histItems);
+//            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
+
+            newFragment = new historyListingPage();
+            newFragment.setArguments(bundle);
+            transaction.replace(R.id.fragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
         /*else if (id == R.id.newRide_button)
         {
@@ -237,6 +250,7 @@ public class MainActivity extends AppCompatActivity
 //TODO:: FIREBASE STUFF
     private void initializeData(int Destination) {
         listItems = new ArrayList<>();
+        histItems = new ArrayList<>();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference MyRef = db.getReference("rideShare");
         MyRef.addValueEventListener(new ValueEventListener() {
@@ -248,19 +262,28 @@ public class MainActivity extends AppCompatActivity
  //                   Log.d("FB item PULL", "PULLED!");
 
                     listingItem newItem = snapshot.getValue(listingItem.class);
+                    historyItem newItemHist = snapshot.getValue(historyItem.class);
 
                     String NameValue = newItem.getName();
 //                    Log.d("NAME", NameValue);
+
+                    String DestinationHist = newItemHist.getDestinationHist();
+                    String TypeHist = newItemHist.getTrip_TypeHist();
+                    String DepartDateHist = newItemHist.getDepart_DateHist();
+                    String DepartTimeHist = newItemHist.getDepart_TimeHist();
+                    String ReturnDateHist = newItemHist.getReturn_DateHist();
+                    String ReturnTimeHist = newItemHist.getReturn_TimeHist();
+                    String PriceHist = newItemHist.getPriceHist();
 
                     String Price = newItem.getPrice();
                     String Type = newItem.getTrip_Type();
                     String Date = newItem.getDepart_Date();
                     //Log.d("DATE:  ", Date);
-
                     //String Destination = "LA";
                     String Phone = newItem.getPhone_Number();
 
                     listItems.add(newItem);
+                    histItems.add(newItemHist);
                     //Log.d("LISTITEMS ADDED!  ", newItem.getDate());
 
 
