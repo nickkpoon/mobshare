@@ -84,13 +84,13 @@ public class listingPage extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String NameValue = snapshot.child("Name").getValue(String.class);
+                    /*String NameValue = snapshot.child("Name").getValue(String.class);
                     String Price = snapshot.child("Price").getValue(String.class);
                     String Type = snapshot.child("Trip Type").getValue(String.class);
                     String Date = snapshot.child("Date").getValue(String.class);
                     String Destination = "LA";
-                    String Phone = snapshot.child("Phone Number").getValue(String.class);
-                    listingItem newItem = new listingItem(NameValue, Type, Price, Date, Destination, Phone);
+                    String Phone = snapshot.child("Phone Number").getValue(String.class);*/
+                    listingItem newItem = snapshot.getValue(listingItem.class);
                     listItems.add(newItem);
 
                 }
