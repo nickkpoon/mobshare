@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth mAuth;
     private FirebaseDatabase User;
     private DatabaseReference MyRef;
+    private Button signOut;
+    private Button createListing;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        Button signOut = findViewById(R.id.nav_signOut);
+        signOut = findViewById(R.id.nav_signOut);
+        createListing = findViewById(R.id.nav_create);
 
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -62,6 +66,20 @@ public class MainActivity extends AppCompatActivity
                 mAuth.signOut();
                 Intent intent = new Intent(MainActivity.this, WelcomeScreen.class);
                 startActivity(intent);
+
+            }
+        });
+
+        createListing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newFragment;
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                newFragment = new newRideShare();
+                transaction.replace(R.id.fragment, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                drawer.closeDrawers();
 
             }
         });
@@ -146,12 +164,11 @@ public class MainActivity extends AppCompatActivity
 
             Fragment newFragment;
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            newFragment = new listingPage();
+            //newFragment = new listingPage();
+            newFragment = new destinationFragment();
             transaction.replace(R.id.fragment, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-//            Intent intent = new Intent(MainActivity.this, listingPage.class);
-//            startActivity(intent);
 
 
         }
@@ -169,10 +186,6 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.fragment, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-
-//          Intent intent = new Intent(MainActivity.this, newRideShare.class);
-//          startActivity(intent);
-
         }
         /*else if (id == R.id.signOut_button)
         {
