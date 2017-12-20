@@ -98,6 +98,22 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+
+        Fragment newFragment;
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("CardList", listItems);
+//            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
+
+        newFragment = new destinationFragment();
+        newFragment.setArguments(bundle);
+        transaction.replace(R.id.fragment, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
 
 
 
@@ -123,7 +139,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
         final TextView RealName = (TextView) findViewById(R.id.RealName);
         final TextView UserName = (TextView) findViewById(R.id.UserName);
         MyRef = User.getReference("Users").child(mAuth.getUid().toString());
@@ -200,7 +215,6 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
 
-
         }
         else if (id == R.id.history_button)
         {
@@ -220,23 +234,6 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
         }
-        /*else if (id == R.id.newRide_button)
-        {
-            Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
-
-            Fragment newFragment;
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            newFragment = new newRideShare();
-            transaction.replace(R.id.fragment, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        }
-        else if (id == R.id.signOut_button)
-        {
-            mAuth.signOut();
-            Intent intent = new Intent(MainActivity.this, WelcomeScreen.class);
-            startActivity(intent);
-        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
