@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -20,10 +21,10 @@ import java.util.Locale;
 
 public class destinationFragment extends Fragment {
 
-    private Button LosAngeles;
-    private Button SanFrancisco;
-    private Button Sacramento;
-    private Button SanDiego;
+    private TextView LosAngeles;
+    private TextView SanFrancisco;
+    private TextView Sacramento;
+    private TextView SanDiego;
 
     @Nullable
     @Override
@@ -79,25 +80,35 @@ public class destinationFragment extends Fragment {
 
     public void goToFragment(int Destination)
     {
+        Fragment newFragment;
+        Bundle bundle = new Bundle();
         switch (Destination)
         {
-            case 0: Toast.makeText(getActivity(), "LA", Toast.LENGTH_SHORT).show();
-            break;
+            case 0:
+                Toast.makeText(getActivity(), "LA", Toast.LENGTH_SHORT).show();
+                bundle.putInt("Dest", 0);
+                break;
 
-            case 1: Toast.makeText(getActivity(), "SF", Toast.LENGTH_SHORT).show();
-            break;
+            case 1:
+                Toast.makeText(getActivity(), "SF", Toast.LENGTH_SHORT).show();
+                bundle.putInt("Dest", 1);
+                break;
 
-            case 2: Toast.makeText(getActivity(), "SAC", Toast.LENGTH_SHORT).show();
-            break;
+            case 2:
+                Toast.makeText(getActivity(), "SAC", Toast.LENGTH_SHORT).show();
+                bundle.putInt("Dest", 2);
+                break;
 
-            case 3: Toast.makeText(getActivity(), "SD", Toast.LENGTH_SHORT).show();
-            break;
+            case 3:
+                Toast.makeText(getActivity(), "SD", Toast.LENGTH_SHORT).show();
+                bundle.putInt("Dest", 3);
+                break;
 
         }
-        Fragment newFragment;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         //newFragment = new listingPage();
         newFragment = new listingPage();
+        newFragment.setArguments(bundle);
         transaction.replace(R.id.fragment, newFragment);
         transaction.addToBackStack(null);
         transaction.commit();

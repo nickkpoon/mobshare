@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 public class listingPage extends Fragment {
 
     private List<listingItem> listItems;
+    private int dest;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,7 +26,15 @@ public class listingPage extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initializeData();
+
+        Bundle bundle = this.getArguments();
+        if(bundle != null)
+        {
+            dest = bundle.getInt("Dest");
+        }
+
+
+        initializeData(dest);
         View v = getView();
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -57,7 +67,28 @@ public class listingPage extends AppCompatActivity {
     }
 */
 
-    private void initializeData() {
+    private void initializeData(int Destination) {
+
+        switch (Destination)
+        {
+            case 0:
+                Toast.makeText(getActivity(), "LA BUNDLE", Toast.LENGTH_SHORT).show();
+                break;
+
+            case 1:
+                Toast.makeText(getActivity(), "SF BUNDLE", Toast.LENGTH_SHORT).show();
+                break;
+
+            case 2:
+                Toast.makeText(getActivity(), "SAC BUNDLE", Toast.LENGTH_SHORT).show();
+                break;
+
+            case 3:
+                Toast.makeText(getActivity(), "SD BUNDLE", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+
         listItems = new ArrayList<>();
 
         for (int i = 0; i <= 10; i++) {

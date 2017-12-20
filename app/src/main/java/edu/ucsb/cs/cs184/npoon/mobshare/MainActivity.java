@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.listings_button)
         {
-            Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
 
             Fragment newFragment;
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
