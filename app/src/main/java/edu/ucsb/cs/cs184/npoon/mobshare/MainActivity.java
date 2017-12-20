@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
@@ -34,11 +38,20 @@ public class MainActivity extends AppCompatActivity
     private Button createListing;
     private DrawerLayout drawer;
 
+
+
+
+    private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //---------------------------------------------------
 
+        initializeData(0);
+//---------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         signOut = findViewById(R.id.nav_signOut);
         createListing = findViewById(R.id.nav_create);
@@ -83,6 +96,8 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
+
 
 
     }
@@ -164,8 +179,14 @@ public class MainActivity extends AppCompatActivity
 
             Fragment newFragment;
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            //newFragment = new listingPage();
+
+
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("CardList", listItems);
+            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
+
             newFragment = new destinationFragment();
+            newFragment.setArguments(bundle);
             transaction.replace(R.id.fragment, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
@@ -206,5 +227,47 @@ public class MainActivity extends AppCompatActivity
         onCreate(savedInstanceState);
     }
 
+//TODO:: FIREBASE STUFF
+    private void initializeData(int Destination) {
+        listItems = new ArrayList<>();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference MyRef = db.getReference("rideShare");
+        Toast.makeText(this, "LA BUNDLE", Toast.LENGTH_SHORT).show();
+        MyRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d("FB item PULL", "PULLED!");
 
+                    listingItem newItem = snapshot.getValue(listingItem.class);
+
+                    String NameValue = newItem.getName();
+                    Log.d("NAME", NameValue);
+
+                    String Price = newItem.getPrice();
+                    String Type = newItem.getTripType();
+                    String Date = newItem.getDate();
+                    Log.d("DATE:  ", Date);
+
+                    String Destination = "LA";
+                    String Phone = newItem.getPhone();
+
+                    listItems.add(newItem);
+                    Log.d("LISTITEMS ADDED!  ", newItem.getDate());
+
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG , "Failed to read value.",error.toException());
+            }
+        });
+
+    }
 }

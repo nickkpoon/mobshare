@@ -1,10 +1,13 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Julio on 12/9/2017.
  */
 
-public class listingItem {
+public class listingItem implements Parcelable {
 
     private String Name;
     private String tripType;
@@ -43,4 +46,30 @@ public class listingItem {
 
     public String getDestination() {return Destination;}
     public String getPhone(){return Phone;}
+
+    protected listingItem(Parcel in) {
+        Name = in.readString();
+        tripType = in.readString();
+        price = in.readString();
+        date = in.readString();
+        Destination = in.readString();
+        Phone = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Name);
+        dest.writeString(tripType);
+        dest.writeString(price);
+        dest.writeString(date);
+        dest.writeString(Destination);
+        dest.writeString(Phone);
+    }
+
+
 }

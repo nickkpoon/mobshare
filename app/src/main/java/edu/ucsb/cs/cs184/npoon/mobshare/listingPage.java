@@ -19,6 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 
 public class listingPage extends Fragment {
     //private static final String TAG = MyActivity.class.getName();
@@ -37,10 +39,16 @@ public class listingPage extends Fragment {
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             dest = bundle.getInt("Dest");
+            listItems = bundle.getParcelableArrayList("CardList");
+            Log.d("GOT TO FRAGMENT2!", listItems.get(0).getDate());
+
+            Log.d(TAG, "CardList: ");
         }
 
+        //listItems = savedInstanceState.getParcelableArrayList("")
 
-        initializeData(dest);
+
+        //initializeData(dest);
         View v = getView();
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -52,26 +60,6 @@ public class listingPage extends Fragment {
 
     }
 
-/*
-
-public class listingPage extends AppCompatActivity {
-
-    private List<listingItem> listItems;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listingspage);
-        initializeData();
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        listingsAdapter adapter = new listingsAdapter(listItems);
-        recyclerView.setAdapter(adapter);
-
-    }
-*/
 
     private void initializeData(int Destination) {
         listItems = new ArrayList<>();
@@ -99,7 +87,7 @@ public class listingPage extends AppCompatActivity {
                     String Destination = "LA";
                     String Phone = newItem.getPhone();
 
-                    //listItems.add(newItem);
+                    listItems.add(newItem);
 
                 }
             }

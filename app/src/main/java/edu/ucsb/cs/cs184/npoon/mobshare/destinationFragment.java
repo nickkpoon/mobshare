@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -25,6 +27,8 @@ public class destinationFragment extends Fragment {
     private TextView SanFrancisco;
     private TextView Sacramento;
     private TextView SanDiego;
+
+    private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
 
     @Nullable
     @Override
@@ -66,6 +70,10 @@ public class destinationFragment extends Fragment {
             }
         });
 
+        Bundle bundle = this.getArguments();
+        listItems = bundle.getParcelableArrayList("CardList");
+        Log.d("GOT TO FRAGMENT!", listItems.get(0).getDate());
+
 
         return view;
     }
@@ -105,6 +113,11 @@ public class destinationFragment extends Fragment {
                 break;
 
         }
+
+
+        bundle.putParcelableArrayList("CardList", listItems);
+        Log.d("PASSED TO FRAGMENT2!", listItems.get(0).getDate());
+
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         //newFragment = new listingPage();
         newFragment = new listingPage();
