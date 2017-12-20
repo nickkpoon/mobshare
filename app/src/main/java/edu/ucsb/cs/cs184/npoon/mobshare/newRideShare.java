@@ -194,14 +194,15 @@ public class newRideShare extends Fragment {
                         // whenever data at this location is updated.
                         String NameValue = dataSnapshot.child("Name").getValue(String.class);
                         String UNameValue = dataSnapshot.child("UserName").getValue(String.class);
-                        String PhoneValue = dataSnapshot.child("Phone").getValue(String.class);
+                        String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
                         rideShare rS = new rideShare(UNameValue, tripType, price, date, PhoneValue, NameValue);
-                        databaserideShare.child(id).child("Username").setValue(UNameValue);
+                        //databaserideShare.child(id).child("Userame").setValue(UNameValue);
                         databaserideShare.child(id).child("Name").setValue(NameValue);
-                        databaserideShare.child(id).child("Trip Type").setValue(tripType);
-                        databaserideShare.child(id).child("Price").setValue(price);
-                        databaserideShare.child(id).child("Date").setValue(date);
-                        databaserideShare.child(id).child("Phone Number").setValue(PhoneValue);
+                        databaserideShare.child(id).child("tripType").setValue(tripType);
+                        databaserideShare.child(id).child("price").setValue(price);
+                        databaserideShare.child(id).child("date").setValue(date);
+                        databaserideShare.child(id).child("Phone").setValue(PhoneValue);
+                        databaserideShare.child(id).child("Destination").setValue("LA");
 
                     }
 

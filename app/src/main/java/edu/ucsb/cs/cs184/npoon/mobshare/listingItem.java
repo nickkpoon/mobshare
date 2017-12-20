@@ -6,20 +6,24 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 
 public class listingItem {
 
-    private String username;
+    private String Name;
     private String tripType;
     private String price;
     private String date;
+    private String Destination;
+    private String Phone;
 
-    public listingItem(String username, String tripType, String price, String date) {
-        this.username = username;
+    public listingItem(String Name, String tripType, String price, String date, String Destination, String Phone) {
+        this.Name = Name;
         this.tripType = tripType;
         this.price = price;
         this.date = date;
+        this.Phone = Phone;
+        this.Destination = Destination;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return Name;
     }
 
     public String getTripType() {
@@ -33,4 +37,7 @@ public class listingItem {
     public String getDate() {
         return date;
     }
+
+    public String getDestination() {return Destination;}
+    public String getPhone(){return Phone;}
 }

@@ -12,10 +12,12 @@ import android.widget.TextView;
 public class myViewHolder extends RecyclerView.ViewHolder{
 
     CardView cv;
-    TextView textUsername;
-    TextView textPrice;
-    TextView textDate;
-    TextView textType;
+    TextView Username;
+    TextView Price;
+    TextView Date;
+    TextView Type;
+    TextView Destination;
+    TextView Phone;
 
     listingItem displayRideshare;
 
@@ -24,17 +26,21 @@ public class myViewHolder extends RecyclerView.ViewHolder{
         super(itemView);
 
         cv = (CardView) itemView.findViewById(R.id.cv);
-        textUsername = (TextView) itemView.findViewById(R.id.textViewUsername);
-        textPrice = (TextView) itemView.findViewById(R.id.textViewPrice);
-        textDate = (TextView) itemView.findViewById(R.id.textViewDate);
-        textType = (TextView) itemView.findViewById(R.id.textViewTripType);
+        Username = (TextView) itemView.findViewById(R.id.Name);
+        Price = (TextView) itemView.findViewById(R.id.Price);
+        Date = (TextView) itemView.findViewById(R.id.Date);
+        Type = (TextView) itemView.findViewById(R.id.Type);
+        Destination = (TextView) itemView.findViewById(R.id.Destination);
+        Phone = (TextView) itemView.findViewById(R.id.Phone);
     }
 
     public void setRS(listingItem rS) {
         this.displayRideshare = rS;
-        textPrice.setText(rS.getPrice());
-        textUsername.setText(rS.getUsername());
-        textDate.setText(rS.getDate());
-        textType.setText(rS.getTripType());
+        Price.setText(rS.getPrice());
+        Username.setText(rS.getName());
+        Date.setText(rS.getDate());
+        Type.setText(rS.getTripType());
+        Destination.setText(rS.getDestination());
+        Phone.setText(rS.getPhone());
     }
 }
