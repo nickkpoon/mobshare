@@ -41,27 +41,27 @@ public class historyItem implements Parcelable {
 //        return Name;
 //    }
 
-    public String getTrip_Type() {
+    public String getTrip_TypeHist() {
         return Trip_TypeHist;
     }
 
-    public String getPrice() {
+    public String getPriceHist() {
         return PriceHist;
     }
 
-    public String getDepart_Date() {
+    public String getDepart_DateHist() {
         return Depart_DateHist;
     }
 
-    public String getDestination() {return DestinationHist;}
+    public String getDestinationHist() {return DestinationHist;}
 //    public String getPhone_Number(){return Phone_Number;}
-    public String getDepart_Time() {return Depart_TimeHist;}
+    public String getDepart_TimeHist() {return Depart_TimeHist;}
 
-    public String getReturn_Date() {
+    public String getReturn_DateHist() {
         return Return_DateHist;
     }
 
-    public String getReturn_Time() {
+    public String getReturn_TimeHist() {
         return Return_TimeHist;
     }
 

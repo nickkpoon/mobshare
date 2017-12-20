@@ -17,7 +17,7 @@ import static android.content.ContentValues.TAG;
 
 public class historyAdapter extends RecyclerView.Adapter<historyViewHolder> {
 
-    private List<historyItem> histItems = new ArrayList<>();
+    private List<historyItem> histItems = new ArrayList<historyItem>();
 
     public historyAdapter(List<historyItem> rShare) {
         this.histItems = rShare;
