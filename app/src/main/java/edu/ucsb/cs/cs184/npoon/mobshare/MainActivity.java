@@ -172,6 +172,14 @@ public class MainActivity extends AppCompatActivity
         {
             Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
 
+            Fragment newFragment;
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            newFragment = new profileFragment();
+
+            transaction.replace(R.id.fragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
         }
         else if (id == R.id.listings_button)
         {
@@ -249,13 +257,13 @@ public class MainActivity extends AppCompatActivity
                     String Price = newItem.getPrice();
                     String Type = newItem.getTripType();
                     String Date = newItem.getDate();
-                    Log.d("DATE:  ", Date);
+                    //Log.d("DATE:  ", Date);
 
                     String Destination = "LA";
                     String Phone = newItem.getPhone();
 
                     listItems.add(newItem);
-                    Log.d("LISTITEMS ADDED!  ", newItem.getDate());
+                    //Log.d("LISTITEMS ADDED!  ", newItem.getDate());
 
 
                 }
