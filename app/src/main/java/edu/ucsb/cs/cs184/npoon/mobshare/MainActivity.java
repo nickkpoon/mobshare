@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
 
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
+    private ArrayList<listingItem> histItems = new ArrayList<listingItem>();
 
 
     @Override
@@ -201,7 +202,20 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.history_button)
         {
-            Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+            Fragment newFragment;
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("CardList", histItems);
+//            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
+
+            newFragment = new historyListingPage();
+            newFragment.setArguments(bundle);
+            transaction.replace(R.id.fragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
         /*else if (id == R.id.newRide_button)
         {
