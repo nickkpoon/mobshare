@@ -13,4 +13,12 @@
         <item>One Way</item>
         <item>Round Trip</item>
     </string-array>
+
+    <string-array name="items2">
+        <item>Select Destination:</item>
+        <item>San Diego</item>
+        <item>Los Angeles</item>
+        <item>San Francisco</item>
+        <item>Sacramento</item>
+    </string-array>
 </resources>
