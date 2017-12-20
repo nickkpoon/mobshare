@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -191,7 +189,7 @@ public class MainActivity extends AppCompatActivity
 
             Bundle bundle = new Bundle();
             bundle.putParcelableArrayList("CardList", listItems);
-            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
+//            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
 
             newFragment = new destinationFragment();
             newFragment.setArguments(bundle);
@@ -247,12 +245,12 @@ public class MainActivity extends AppCompatActivity
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Log.d("FB item PULL", "PULLED!");
+ //                   Log.d("FB item PULL", "PULLED!");
 
                     listingItem newItem = snapshot.getValue(listingItem.class);
 
                     String NameValue = newItem.getName();
-                    Log.d("NAME", NameValue);
+//                    Log.d("NAME", NameValue);
 
                     String Price = newItem.getPrice();
                     String Type = newItem.getTripType();
