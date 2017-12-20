@@ -10,8 +10,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,24 +26,43 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
     private FirebaseDatabase User;
     private DatabaseReference MyRef;
+    private Button signOut;
+    private Button createListing;
+    private DrawerLayout drawer;
+
+
+
+
+    private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //---------------------------------------------------
+
+        initializeData(0);
+//---------------------------------------------------
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        signOut = findViewById(R.id.nav_signOut);
+        createListing = findViewById(R.id.nav_create);
+
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
         User = FirebaseDatabase.getInstance();
 
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -48,6 +70,34 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mAuth.signOut();
+                Intent intent = new Intent(MainActivity.this, WelcomeScreen.class);
+                startActivity(intent);
+
+            }
+        });
+
+        createListing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newFragment;
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                newFragment = new newRideShare();
+                transaction.replace(R.id.fragment, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                drawer.closeDrawers();
+
+            }
+        });
+
+
 
 
     }
@@ -122,19 +172,32 @@ public class MainActivity extends AppCompatActivity
         {
             Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
 
-        }
-        else if (id == R.id.listings_button)
-        {
-            Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
-
             Fragment newFragment;
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            newFragment = new listingPage();
+            newFragment = new profileFragment();
+
             transaction.replace(R.id.fragment, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-//            Intent intent = new Intent(MainActivity.this, listingPage.class);
-//            startActivity(intent);
+
+        }
+        else if (id == R.id.listings_button)
+        {
+            //Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+
+            Fragment newFragment;
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("CardList", listItems);
+            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
+
+            newFragment = new destinationFragment();
+            newFragment.setArguments(bundle);
+            transaction.replace(R.id.fragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
 
         }
@@ -142,7 +205,7 @@ public class MainActivity extends AppCompatActivity
         {
             Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
         }
-        else if (id == R.id.newRide_button)
+        /*else if (id == R.id.newRide_button)
         {
             Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
 
@@ -152,17 +215,13 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.fragment, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-
-//          Intent intent = new Intent(MainActivity.this, newRideShare.class);
-//          startActivity(intent);
-
         }
         else if (id == R.id.signOut_button)
         {
             mAuth.signOut();
             Intent intent = new Intent(MainActivity.this, WelcomeScreen.class);
             startActivity(intent);
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -176,5 +235,47 @@ public class MainActivity extends AppCompatActivity
         onCreate(savedInstanceState);
     }
 
+//TODO:: FIREBASE STUFF
+    private void initializeData(int Destination) {
+        listItems = new ArrayList<>();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference MyRef = db.getReference("rideShare");
+        Toast.makeText(this, "LA BUNDLE", Toast.LENGTH_SHORT).show();
+        MyRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d("FB item PULL", "PULLED!");
 
+                    listingItem newItem = snapshot.getValue(listingItem.class);
+
+                    String NameValue = newItem.getName();
+                    Log.d("NAME", NameValue);
+
+                    String Price = newItem.getPrice();
+                    String Type = newItem.getTripType();
+                    String Date = newItem.getDate();
+                    //Log.d("DATE:  ", Date);
+
+                    String Destination = "LA";
+                    String Phone = newItem.getPhone();
+
+                    listItems.add(newItem);
+                    //Log.d("LISTITEMS ADDED!  ", newItem.getDate());
+
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG , "Failed to read value.",error.toException());
+            }
+        });
+
+    }
 }
