@@ -13,6 +13,9 @@ public class listingItem {
     private String Destination;
     private String Phone;
 
+    public listingItem() {
+    }
+
     public listingItem(String Name, String tripType, String price, String date, String Destination, String Phone) {
         this.Name = Name;
         this.tripType = tripType;

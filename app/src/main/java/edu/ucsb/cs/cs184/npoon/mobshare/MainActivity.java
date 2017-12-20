@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity
         {
             Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
         }
-        else if (id == R.id.newRide_button)
+        /*else if (id == R.id.newRide_button)
         {
             Toast.makeText(this, "4", Toast.LENGTH_SHORT).show();
 
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
         }
-        /*else if (id == R.id.signOut_button)
+        else if (id == R.id.signOut_button)
         {
             mAuth.signOut();
             Intent intent = new Intent(MainActivity.this, WelcomeScreen.class);

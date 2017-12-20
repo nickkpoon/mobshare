@@ -10,6 +10,10 @@
     <color name="colorNavTint">#EEEEEE</color>
     <color name="colorNavButton0">#50C26D</color>
     <color name="colorNavButton1">#E8A178</color>
+    <color name="cardViewTitle">#CCB05A</color>
+    <color name="cardViewPrice">#69CF5A</color>
+
+
 
 
 </resources>

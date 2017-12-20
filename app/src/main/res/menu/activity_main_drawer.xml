@@ -14,10 +14,7 @@
             android:id="@+id/history_button"
             android:icon="@drawable/ic_nav_history"
             android:title="Ride History" />
-        <item
-            android:id="@+id/newRide_button"
-            android:icon="@drawable/ic_add_black_24dp"
-            android:title="Create Listing" />
+
 
     </group>
 
