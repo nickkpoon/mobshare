@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
 /**
@@ -91,6 +92,7 @@ public class destinationFragment extends Fragment {
     {
         Fragment newFragment;
         Bundle bundle = new Bundle();
+        Filtered.clear();
         switch (Destination)
         {
             case 0:
@@ -99,6 +101,7 @@ public class destinationFragment extends Fragment {
                     if(listItems.get(i).getDestination().equals("Los Angeles") ){
                         //Log.d("Destination: ", listItems.get(i).getDestination());
                         Filtered.add(listItems.get(i));
+
                     }
                 }
                 bundle.putInt("Dest", 0);
@@ -136,7 +139,7 @@ public class destinationFragment extends Fragment {
 
         }
 
-
+        Collections.sort(Filtered);
         bundle.putParcelableArrayList("CardList", Filtered);
         //Log.d("PASSED TO FRAGMENT2!", listItems.get(0).getDate());
 

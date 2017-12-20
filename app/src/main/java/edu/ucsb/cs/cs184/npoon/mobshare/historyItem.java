@@ -4,77 +4,80 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by Julio on 12/9/2017.
  */
 @SuppressLint("ParcelCreator")
 
-public class historyItem implements Parcelable {
+public class historyItem implements Parcelable, Comparable<historyItem> {
 
 //    private String Name;
-    private String Trip_TypeHist;
-    private String PriceHist;
-    private String Depart_DateHist;
-    private String DestinationHist;
+    private String Trip_Type;
+    private String Price;
+    private String Depart_Date;
+    private String Destination;
 //    private String Phone_Number;
 
-    private String Depart_TimeHist;
-    private String Return_DateHist;
-    private String Return_TimeHist;
+    private String Depart_Time;
+    private String Return_Date;
+    private String Return_Time;
 
     public historyItem() {
     }
 
     public historyItem(String Trip_Type, String Price, String Depart_Date, String Destination, String Depart_Time, String Return_Date, String Return_Time) {
 //        this.Name = Name;
-        this.Trip_TypeHist = Trip_Type;
-        this.PriceHist = Price;
-        this.Depart_DateHist = Depart_Date;
+        this.Trip_Type = Trip_Type;
+        this.Price = Price;
+        this.Depart_Date = Depart_Date;
 //        this.Phone_Number = Phone_Number;
-        this.DestinationHist = Destination;
-        this.Depart_TimeHist = Depart_Time;
-        this.Return_TimeHist = Return_Time;
-        this.Return_DateHist = Return_Date;
+        this.Destination = Destination;
+        this.Depart_Time = Depart_Time;
+        this.Return_Time = Return_Time;
+        this.Return_Date = Return_Date;
     }
 
 //    public String getName() {
 //        return Name;
 //    }
 
-    public String getTrip_TypeHist() {
-        return Trip_TypeHist;
+    public String getTrip_Type() {
+        return Trip_Type;
     }
 
-    public String getPriceHist() {
-        return PriceHist;
+    public String getPrice() {
+        return Price;
     }
 
-    public String getDepart_DateHist() {
-        return Depart_DateHist;
+    public String getDepart_Date() {
+        return Depart_Date;
     }
 
-    public String getDestinationHist() {return DestinationHist;}
+    public String getDestination() {return Destination;}
 //    public String getPhone_Number(){return Phone_Number;}
-    public String getDepart_TimeHist() {return Depart_TimeHist;}
+    public String getDepart_Time() {return Depart_Time;}
 
-    public String getReturn_DateHist() {
-        return Return_DateHist;
+    public String getReturn_Date() {
+        return Return_Date;
     }
 
-    public String getReturn_TimeHist() {
-        return Return_TimeHist;
+    public String getReturn_Time() {
+        return Return_Time;
     }
 
     protected historyItem(Parcel in) {
 //        Name = in.readString();
-        Trip_TypeHist = in.readString();
-        PriceHist = in.readString();
-        Depart_DateHist = in.readString();
-        DestinationHist = in.readString();
+        Trip_Type = in.readString();
+        Price = in.readString();
+        Depart_Date = in.readString();
+        Destination = in.readString();
 //        Phone_Number = in.readString();
-        Depart_TimeHist = in.readString();
-        Return_DateHist = in.readString();
-        Return_TimeHist = in.readString();
+        Depart_Time = in.readString();
+        Return_Date = in.readString();
+        Return_Time = in.readString();
     }
 
     @Override
@@ -85,15 +88,27 @@ public class historyItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 //        dest.writeString(Name);
-        dest.writeString(Trip_TypeHist);
-        dest.writeString(PriceHist);
-        dest.writeString(Depart_DateHist);
-        dest.writeString(DestinationHist);
+        dest.writeString(Trip_Type);
+        dest.writeString(Price);
+        dest.writeString(Depart_Date);
+        dest.writeString(Destination);
 //        dest.writeString(Phone_Number);
-        dest.writeString(Depart_TimeHist);
-        dest.writeString(Return_TimeHist);
-        dest.writeString(Return_DateHist);
+        dest.writeString(Depart_Time);
+        dest.writeString(Return_Time);
+        dest.writeString(Return_Date);
     }
+    public int compareTo(historyItem item){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        try {
+            Date d = dateFormat.parse(getDepart_Date());
+            Date date = dateFormat.parse(item.getDepart_Date());
+            //Log.d("Date: ", d.toString());
+            return date.compareTo(d);
+        }
+        catch(Exception e) {
+            return 0;
+        }
 
+    }
 
 }

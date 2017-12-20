@@ -430,6 +430,12 @@ public class newRideShare extends Fragment {
                             databaserideShare.child(id).child("Depart_Time").setValue(timeD);
                             databaserideShare.child(id).child("Return_Time").setValue("N/A");
                             databaserideShare.child(id).child("Phone_Number").setValue(PhoneValue);
+                            UserRef.child("rideShares").child(id).child("Return_Time").setValue("N/A");
+                            UserRef.child("rideShares").child(id).child("Depart_Time").setValue(timeD);
+                            UserRef.child("rideShares").child(id).child("Return_Date").setValue("N/A");
+                            UserRef.child("rideShares").child(id).child("Depart_Date").setValue(dateD);
+                            UserRef.child("rideShares").child(id).child("Price").setValue(price);
+                            UserRef.child("rideShares").child(id).child("Destination").setValue(destination);
 
                             Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
                                     "Ride Share Posted!",
@@ -466,6 +472,12 @@ public class newRideShare extends Fragment {
                             databaserideShare.child(id).child("Depart_Time").setValue(timeD);
                             databaserideShare.child(id).child("Return_Time").setValue(timeR);
                             databaserideShare.child(id).child("Phone_Number").setValue(PhoneValue);
+                            UserRef.child("rideShares").child(id).child("Return_Time").setValue(timeR);
+                            UserRef.child("rideShares").child(id).child("Depart_Time").setValue(timeD);
+                            UserRef.child("rideShares").child(id).child("Return_Date").setValue(dateR);
+                            UserRef.child("rideShares").child(id).child("Depart_Date").setValue(dateD);
+                            UserRef.child("rideShares").child(id).child("Price").setValue(price);
+                            UserRef.child("rideShares").child(id).child("Destination").setValue(destination);
 
                             Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
                                     "Ride Share Posted!",

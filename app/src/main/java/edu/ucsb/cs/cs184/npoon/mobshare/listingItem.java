@@ -3,13 +3,17 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Julio on 12/9/2017.
  */
 @SuppressLint("ParcelCreator")
 
-public class listingItem implements Parcelable {
+public class listingItem implements Parcelable, Comparable<listingItem> {
 
     private String Name;
     private String Trip_Type;
@@ -95,5 +99,18 @@ public class listingItem implements Parcelable {
         dest.writeString(Return_Date);
     }
 
+    public int compareTo(listingItem item){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        try {
+            Date d = dateFormat.parse(getDepart_Date());
+            Date date = dateFormat.parse(item.getDepart_Date());
+            //Log.d("Date: ", d.toString());
+            return date.compareTo(d);
+        }
+        catch(Exception e) {
+            return 0;
+        }
+
+    }
 
 }

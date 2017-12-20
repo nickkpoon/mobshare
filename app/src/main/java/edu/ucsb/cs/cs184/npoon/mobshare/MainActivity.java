@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -26,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -208,6 +210,7 @@ public class MainActivity extends AppCompatActivity
 
 
             Bundle bundle = new Bundle();
+            Collections.sort(histItems);
             bundle.putParcelableArrayList("CardList", histItems);
 //            Log.d("PASSED TO FRAGMENT!", listItems.get(0).getDate());
 
@@ -251,8 +254,11 @@ public class MainActivity extends AppCompatActivity
     private void initializeData(int Destination) {
         listItems = new ArrayList<>();
         histItems = new ArrayList<>();
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference MyRef = db.getReference("rideShare");
+
+        Toast.makeText(this, "LA BUNDLE", Toast.LENGTH_SHORT).show();
         MyRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -261,19 +267,19 @@ public class MainActivity extends AppCompatActivity
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
  //                   Log.d("FB item PULL", "PULLED!");
 
-                    listingItem newItem = snapshot.getValue(listingItem.class);
-                    historyItem newItemHist = snapshot.getValue(historyItem.class);
+                    final listingItem newItem = snapshot.getValue(listingItem.class);
+                    final historyItem newItemHist = snapshot.getValue(historyItem.class);
 
                     String NameValue = newItem.getName();
 //                    Log.d("NAME", NameValue);
 
-                    String DestinationHist = newItemHist.getDestinationHist();
-                    String TypeHist = newItemHist.getTrip_TypeHist();
-                    String DepartDateHist = newItemHist.getDepart_DateHist();
-                    String DepartTimeHist = newItemHist.getDepart_TimeHist();
-                    String ReturnDateHist = newItemHist.getReturn_DateHist();
-                    String ReturnTimeHist = newItemHist.getReturn_TimeHist();
-                    String PriceHist = newItemHist.getPriceHist();
+                    String DestinationHist = newItemHist.getDestination();
+                    String TypeHist = newItemHist.getTrip_Type();
+                    String DepartDateHist = newItemHist.getDepart_Date();
+                    String DepartTimeHist = newItemHist.getDepart_Time();
+                    String ReturnDateHist = newItemHist.getReturn_Date();
+                    String ReturnTimeHist = newItemHist.getReturn_Time();
+                    String PriceHist = newItemHist.getPrice();
 
                     String Price = newItem.getPrice();
                     String Type = newItem.getTrip_Type();
@@ -283,9 +289,25 @@ public class MainActivity extends AppCompatActivity
                     String Phone = newItem.getPhone_Number();
 
                     listItems.add(newItem);
-                    histItems.add(newItemHist);
-                    //Log.d("LISTITEMS ADDED!  ", newItem.getDate());
+                    DatabaseReference Users = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getUid().toString());
+                    Users.addValueEventListener(new ValueEventListener(){
+                        public void onDataChange(DataSnapshot user) {
+                            String name = user.child("Name").getValue(String.class);
+                            if (name.equals(newItem.getName()))
+                            {
+                                histItems.add(newItemHist);
+                            }
 
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            //Log.w(TAG , "Failed to read value.",error.toException());
+                        }
+                    });
+                    //Log.d("LISTITEMS ADDED!  ", newItem.getDate());
+                    //Collections.sort(listItems);
+                    //Collections.sort(histItems);
 
                 }
             }
