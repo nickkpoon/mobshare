@@ -62,7 +62,9 @@
         android:fitsSystemWindows="true"
         android:background="@color/colorNavHeader"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"
+        app:itemTextColor="@color/colorNavTint"
+        app:itemIconTint="@color/colorNavTint"/>
 
 
 
