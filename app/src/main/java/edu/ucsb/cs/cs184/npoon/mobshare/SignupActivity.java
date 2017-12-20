@@ -110,10 +110,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                     Toast.LENGTH_SHORT).show();
 
                         }
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(SignupActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
                         // [START_EXCLUDE]
                         //hideProgressDialog();
                         // [END_EXCLUDE]

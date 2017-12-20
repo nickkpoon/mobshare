@@ -69,15 +69,6 @@
             android:theme="@style/AppTheme">
         </activity>
 
-        <activity
-            android:name=".newRideShare"
-            android:label="Post a New Ride!">
-        </activity>
-
-        <activity
-            android:name=".listingPage"
-            android:label="Check Out These Sweet Rides:">
-        </activity>
 
     </application>
 

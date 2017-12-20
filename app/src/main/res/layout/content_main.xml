@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@color/colorPrimaryDark"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main"
     tools:context="edu.ucsb.cs.cs184.npoon.mobshare.MainActivity">
@@ -15,6 +16,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1" />
 

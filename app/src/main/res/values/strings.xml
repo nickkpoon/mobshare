@@ -7,7 +7,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="textViewDest">Destination</string>
-    <string name="chooseDest">Click Here To Select Destination</string>
+    <string name="chooseDest">One Way</string>
     <string-array name="items">
         <item>Select Type of Trip:</item>
         <item>One Way</item>
