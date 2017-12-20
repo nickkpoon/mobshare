@@ -239,7 +239,6 @@ public class MainActivity extends AppCompatActivity
         listItems = new ArrayList<>();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference MyRef = db.getReference("rideShare");
-        Toast.makeText(this, "LA BUNDLE", Toast.LENGTH_SHORT).show();
         MyRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

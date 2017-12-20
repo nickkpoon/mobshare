@@ -34,17 +34,22 @@ public class myViewHolder extends RecyclerView.ViewHolder{
         Destination = (TextView) itemView.findViewById(R.id.Destination);
         Phone = (TextView) itemView.findViewById(R.id.Phone);
         Return_Date = (TextView) itemView.findViewById(R.id.Return_Date);
+
     }
 
-    public void setRS(listingItem rS) {
+    public void setRS(listingItem rS, Boolean RT) {
         this.displayRideshare = rS;
-        Price.setText("Ride Price: " + rS.getPrice());
+        Price.setText("$" + rS.getPrice());
         Username.setText("Driver: " + rS.getName());
-        Date.setText("Departure Date: " + rS.getDepart_Date() + "       " + "Departure Time: " + rS.getDepart_Time());
-        Type.setText("Trip Type: " + rS.getTrip_Type());
-        Destination.setText("Destination: " + rS.getDestination());
-        Phone.setText("Driver Phone Number: " + rS.getPhone_Number());
-        Return_Date.setText("Return Date: " + rS.getReturn_Date() + "       " + "Return Time: " + rS.getReturn_Time());
+        Date.setText("Depart: " + rS.getDepart_Date() + "       Time: " + rS.getDepart_Time());
+        Type.setText(rS.getTrip_Type());
+        Destination.setText(rS.getDestination());
+        Phone.setText("Number: " + rS.getPhone_Number());
+
+        if(RT)
+        Return_Date.setText("Return: " + rS.getReturn_Date() + "       Time: " + rS.getReturn_Time());
+
+
 
     }
 }

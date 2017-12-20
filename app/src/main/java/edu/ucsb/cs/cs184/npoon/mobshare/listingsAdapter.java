@@ -1,10 +1,14 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +24,32 @@ public class listingsAdapter extends RecyclerView.Adapter<myViewHolder> {
     private List<listingItem> listItems = new ArrayList<listingItem>();
 
     public listingsAdapter(List<listingItem> rShare) {
-    this.listItems = rShare;
+
+        this.listItems = rShare;
     }
 
     @Override
     public void onBindViewHolder(myViewHolder myViewHolder, int i) {
-        myViewHolder.setRS(listItems.get(i));
+
+        Boolean RT;
+
+        if(listItems.get(i).getReturn_Date().equals("N/A"))
+        {
+            Log.d(TAG, listItems.get(i).getReturn_Date());
+
+            Log.d(TAG, "RT = FALSE");
+
+            RT = false;
+        }
+
+        else
+        {
+            RT = true;
+        }
+
+
+        myViewHolder.setRS(listItems.get(i), RT);
+
     }
 
     @Override
@@ -46,4 +70,5 @@ public class listingsAdapter extends RecyclerView.Adapter<myViewHolder> {
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
+
 }

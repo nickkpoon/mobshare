@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/forFragment"
+    android:background="@color/colorPrimaryDark"
     tools:layout_editor_absoluteY="81dp">
 
     <Spinner
         android:id="@+id/tripDestination"
-        android:layout_width="337dp"
+        android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_marginEnd="23dp"
         android:layout_marginRight="23dp"
@@ -17,10 +18,27 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="25dp"
         android:entries="@array/items2"
+        android:popupBackground="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/tripType"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="25dp"
+        android:popupBackground="@color/colorPrimaryDark"
+        android:entries="@array/items"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripDestination" />
 
     <TextView
         android:id="@+id/textViewDepartD"
@@ -122,19 +140,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="1.0" />
 
-    <Spinner
-        android:id="@+id/tripType"
-        android:layout_width="337dp"
-        android:layout_height="27dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="25dp"
-        android:entries="@array/items"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripDestination" />
+
 
 </android.support.constraint.ConstraintLayout>

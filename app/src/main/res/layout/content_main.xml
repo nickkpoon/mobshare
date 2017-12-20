@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
 
-        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintTop_creator="parent"
         tools:layout_constraintRight_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
