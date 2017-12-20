@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -257,7 +258,7 @@ public class MainActivity extends AppCompatActivity
                     String Date = newItem.getDepart_Date();
                     //Log.d("DATE:  ", Date);
 
-                    String Destination = "LA";
+                    //String Destination = "LA";
                     String Phone = newItem.getPhone_Number();
 
                     listItems.add(newItem);

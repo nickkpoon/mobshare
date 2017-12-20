@@ -29,6 +29,7 @@ public class destinationFragment extends Fragment {
     private TextView SanDiego;
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
+    private ArrayList<listingItem> Filtered = new ArrayList<listingItem>();
 
     @Nullable
     @Override
@@ -94,28 +95,49 @@ public class destinationFragment extends Fragment {
         {
             case 0:
                 Toast.makeText(getActivity(), "LA", Toast.LENGTH_SHORT).show();
+                for(int i = 0; i<listItems.size(); i++){
+                    if(listItems.get(i).getDestination().equals("Los Angeles") ){
+                        //Log.d("Destination: ", listItems.get(i).getDestination());
+                        Filtered.add(listItems.get(i));
+                    }
+                }
                 bundle.putInt("Dest", 0);
                 break;
 
             case 1:
                 Toast.makeText(getActivity(), "SF", Toast.LENGTH_SHORT).show();
+                for(int i = 0; i<listItems.size(); i++){
+                    if(listItems.get(i).getDestination().equals("San Francisco" )){
+                        Filtered.add(listItems.get(i));
+                    }
+                }
                 bundle.putInt("Dest", 1);
                 break;
 
             case 2:
                 Toast.makeText(getActivity(), "SAC", Toast.LENGTH_SHORT).show();
+                for(int i = 0; i<listItems.size(); i++){
+                    if(listItems.get(i).getDestination().equals("Sacramento")){
+                        Filtered.add(listItems.get(i));
+                    }
+                }
                 bundle.putInt("Dest", 2);
                 break;
 
             case 3:
                 Toast.makeText(getActivity(), "SD", Toast.LENGTH_SHORT).show();
+                for(int i = 0; i<listItems.size(); i++){
+                    if(listItems.get(i).getDestination().equals("San Diego") ){
+                        Filtered.add(listItems.get(i));
+                    }
+                }
                 bundle.putInt("Dest", 3);
                 break;
 
         }
 
 
-        bundle.putParcelableArrayList("CardList", listItems);
+        bundle.putParcelableArrayList("CardList", Filtered);
         //Log.d("PASSED TO FRAGMENT2!", listItems.get(0).getDate());
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
