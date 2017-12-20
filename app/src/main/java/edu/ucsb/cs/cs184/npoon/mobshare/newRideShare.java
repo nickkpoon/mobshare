@@ -3,6 +3,7 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -370,7 +371,7 @@ public class newRideShare extends Fragment {
                 // whenever data at this location is updated.
                 String NameValue = dataSnapshot.child("Name").getValue(String.class);
                 String UNameValue = dataSnapshot.child("UserName").getValue(String.class);
-                String PhoneValue = dataSnapshot.child("Phone").getValue(String.class);
+                String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
             }
 
             @Override
@@ -416,19 +417,19 @@ public class newRideShare extends Fragment {
                             // whenever data at this location is updated.
                             String NameValue = dataSnapshot.child("Name").getValue(String.class);
                             String UNameValue = dataSnapshot.child("UserName").getValue(String.class);
-                            String PhoneValue = dataSnapshot.child("Phone").getValue(String.class);
+                            String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
 //                        rideShare rS = new rideShare(UNameValue, destination, tripType, price, date, PhoneValue, NameValue);
 
                             databaserideShare.child(id).child("Username").setValue(UNameValue);
                             databaserideShare.child(id).child("Name").setValue(NameValue);
                             databaserideShare.child(id).child("Destination").setValue(destination);
-                            databaserideShare.child(id).child("Trip Type").setValue(tripType);
+                            databaserideShare.child(id).child("Trip_Type").setValue(tripType);
                             databaserideShare.child(id).child("Price").setValue(price);
-                            databaserideShare.child(id).child("Depart Date").setValue(dateD);
-                            databaserideShare.child(id).child("Return Date").setValue("N/A");
-                            databaserideShare.child(id).child("Depart Time").setValue(timeD);
-                            databaserideShare.child(id).child("Return Time").setValue("N/A");
-                            databaserideShare.child(id).child("Phone Number").setValue(PhoneValue);
+                            databaserideShare.child(id).child("Depart_Date").setValue(dateD);
+                            databaserideShare.child(id).child("Return_Date").setValue("N/A");
+                            databaserideShare.child(id).child("Depart_Time").setValue(timeD);
+                            databaserideShare.child(id).child("Return_Time").setValue("N/A");
+                            databaserideShare.child(id).child("Phone_Number").setValue(PhoneValue);
 
                             Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
                                     "Ride Share Posted!",
@@ -458,13 +459,13 @@ public class newRideShare extends Fragment {
                             databaserideShare.child(id).child("Username").setValue(UNameValue);
                             databaserideShare.child(id).child("Name").setValue(NameValue);
                             databaserideShare.child(id).child("Destination").setValue(destination);
-                            databaserideShare.child(id).child("Trip Type").setValue(tripType);
+                            databaserideShare.child(id).child("Trip_Type").setValue(tripType);
                             databaserideShare.child(id).child("Price").setValue(price);
-                            databaserideShare.child(id).child("Depart Date").setValue(dateD);
-                            databaserideShare.child(id).child("Return Date").setValue(dateR);
-                            databaserideShare.child(id).child("Depart Time").setValue(timeD);
-                            databaserideShare.child(id).child("Return Time").setValue(timeR);
-                            databaserideShare.child(id).child("Phone Number").setValue(PhoneValue);
+                            databaserideShare.child(id).child("Depart_Date").setValue(dateD);
+                            databaserideShare.child(id).child("Return_Date").setValue(dateR);
+                            databaserideShare.child(id).child("Depart_Time").setValue(timeD);
+                            databaserideShare.child(id).child("Return_Time").setValue(timeR);
+                            databaserideShare.child(id).child("Phone_Number").setValue(PhoneValue);
 
                             Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
                                     "Ride Share Posted!",
@@ -484,6 +485,8 @@ public class newRideShare extends Fragment {
                         "Please Enter a Price!",
                         Toast.LENGTH_LONG).show();
             }
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
 
     }
 /*    private void launchMaps(){

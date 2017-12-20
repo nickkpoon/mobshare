@@ -72,7 +72,7 @@ public class destinationFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         listItems = bundle.getParcelableArrayList("CardList");
-        Log.d("GOT TO FRAGMENT!", listItems.get(0).getDate());
+       // Log.d("GOT TO FRAGMENT!", listItems.get(0).getDate());
 
 
         return view;
@@ -116,7 +116,7 @@ public class destinationFragment extends Fragment {
 
 
         bundle.putParcelableArrayList("CardList", listItems);
-        Log.d("PASSED TO FRAGMENT2!", listItems.get(0).getDate());
+        //Log.d("PASSED TO FRAGMENT2!", listItems.get(0).getDate());
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         //newFragment = new listingPage();

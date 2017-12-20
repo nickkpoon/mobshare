@@ -12,50 +12,69 @@ import android.os.Parcelable;
 public class listingItem implements Parcelable {
 
     private String Name;
-    private String tripType;
-    private String price;
-    private String date;
+    private String Trip_Type;
+    private String Price;
+    private String Depart_Date;
     private String Destination;
-    private String Phone;
+    private String Phone_Number;
+
+    private String Depart_Time;
+    private String Return_Date;
+    private String Return_Time;
 
     public listingItem() {
     }
 
-    public listingItem(String Name, String tripType, String price, String date, String Destination, String Phone) {
+    public listingItem(String Name, String Trip_Type, String Price, String Depart_Date, String Destination, String Phone_Number, String Depart_Time, String Return_Date, String Return_Time) {
         this.Name = Name;
-        this.tripType = tripType;
-        this.price = price;
-        this.date = date;
-        this.Phone = Phone;
+        this.Trip_Type = Trip_Type;
+        this.Price = Price;
+        this.Depart_Date = Depart_Date;
+        this.Phone_Number = Phone_Number;
         this.Destination = Destination;
+        this.Depart_Time = Depart_Time;
+        this.Return_Time = Return_Time;
+        this.Return_Date = Return_Date;
     }
 
     public String getName() {
         return Name;
     }
 
-    public String getTripType() {
-        return tripType;
+    public String getTrip_Type() {
+        return Trip_Type;
     }
 
     public String getPrice() {
-        return price;
+        return Price;
     }
 
-    public String getDate() {
-        return date;
+    public String getDepart_Date() {
+        return Depart_Date;
     }
 
     public String getDestination() {return Destination;}
-    public String getPhone(){return Phone;}
+    public String getPhone_Number(){return Phone_Number;}
+    public String getDepart_Time() {return Depart_Time;}
+
+    public String getReturn_Date() {
+        return Return_Date;
+    }
+
+    public String getReturn_Time() {
+        return Return_Time;
+    }
 
     protected listingItem(Parcel in) {
         Name = in.readString();
-        tripType = in.readString();
-        price = in.readString();
-        date = in.readString();
+        Trip_Type = in.readString();
+        Price = in.readString();
+        Depart_Date = in.readString();
         Destination = in.readString();
-        Phone = in.readString();
+        Phone_Number = in.readString();
+        Depart_Time = in.readString();
+        Return_Date = in.readString();
+        Return_Time = in.readString();
     }
 
     @Override
@@ -66,11 +85,14 @@ public class listingItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(Name);
-        dest.writeString(tripType);
-        dest.writeString(price);
-        dest.writeString(date);
+        dest.writeString(Trip_Type);
+        dest.writeString(Price);
+        dest.writeString(Depart_Date);
         dest.writeString(Destination);
-        dest.writeString(Phone);
+        dest.writeString(Phone_Number);
+        dest.writeString(Depart_Time);
+        dest.writeString(Return_Time);
+        dest.writeString(Return_Date);
     }
 
 

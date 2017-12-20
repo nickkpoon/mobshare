@@ -40,7 +40,7 @@ public class listingPage extends Fragment {
         if (bundle != null) {
             dest = bundle.getInt("Dest");
             listItems = bundle.getParcelableArrayList("CardList");
-            Log.d("GOT TO FRAGMENT2!", listItems.get(0).getDate());
+            //Log.d("GOT TO FRAGMENT2!", listItems.get(0).getDate());
 
             Log.d(TAG, "CardList: ");
         }
@@ -66,7 +66,7 @@ public class listingPage extends Fragment {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference MyRef = db.getReference("rideShare");
         Toast.makeText(getActivity(), "LA BUNDLE", Toast.LENGTH_SHORT).show();
-        MyRef.addValueEventListener(new ValueEventListener() {
+       /* MyRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -98,27 +98,55 @@ public class listingPage extends Fragment {
                 // Failed to read value
                 //Log.w(TAG , "Failed to read value.",error.toException());
             }
-        });
+        });*/
 
 
 
 
-        /*switch (Destination)
+        switch (Destination)
         {
 
             case 0:
-                Toast.makeText(getActivity(), "LA BUNDLE", Toast.LENGTH_SHORT).show();
-                for (int i = 0; i <= 10; i++) {
-                    listingItem newItem = new listingItem(
-                            "USERNAME" + (i + 1), "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "1234567891");
+                 MyRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //Log.d("FB item PULL", "PULLED!");
+
+                    listingItem newItem = snapshot.getValue(listingItem.class);
+
+                    //String NameValue = newItem.getName();
+                    //Log.d("NAME", NameValue);
+
+                    //String Price = newItem.getPrice();
+                    //String Type = newItem.getTripType();
+                    //String Date = newItem.getDate();
+                    //Log.d("DATE:  ", Date);
+
+                    //String Destination = "LA";
+                    //String Phone = newItem.getPhone();
+
                     listItems.add(newItem);
-                break;
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG , "Failed to read value.",error.toException());
+            }
+        });
+                 break;
 
             case 1:
                 Toast.makeText(getActivity(), "SF BUNDLE", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i <= 10; i++) {
                     listingItem newItem = new listingItem(
-                            "USERNAME" + (i + 1), "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "1234567891");
+                            "USERNAME" + (i + 1), "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "1234567891", "D","D", "D");
                     listItems.add(newItem);
                     Log.d("hmm", "Username");
 
@@ -129,7 +157,7 @@ public class listingPage extends Fragment {
                 Toast.makeText(getActivity(), "SAC BUNDLE", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i <= 10; i++) {
                     listingItem newItem = new listingItem(
-                            "USERNAME" + (i + 1), "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SAC", "1234567891");
+                            "USERNAME" + (i + 1), "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "1234567891", "D","D", "D");
                     listItems.add(newItem);
                 }
                 break;
@@ -138,12 +166,12 @@ public class listingPage extends Fragment {
                 Toast.makeText(getActivity(), "SD BUNDLE", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i <= 10; i++) {
                     listingItem newItem = new listingItem(
-                            "USERNAME" + (i + 1), "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SD", "1234567891");
+                            "USERNAME" + (i + 1), "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "1234567891", "D","D", "D");
                     listItems.add(newItem);
                 }
                 break;
 
-        }*/
+        }
     }
 
 }

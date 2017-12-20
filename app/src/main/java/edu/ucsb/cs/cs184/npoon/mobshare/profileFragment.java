@@ -10,6 +10,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
+
 
 /**
  * Created by nickkpoon on 12/20/17.
@@ -17,10 +26,10 @@ import android.widget.TextView;
 
 public class profileFragment extends Fragment {
 
-    private TextView name;
-    private TextView phone_num;
-    private TextView rides_given;
-    private TextView rides_taken;
+
+    private FirebaseDatabase User;
+    private DatabaseReference UserRef;
+    private FirebaseAuth mAuth;
 
 
 
@@ -29,12 +38,34 @@ public class profileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        User = FirebaseDatabase.getInstance();
+        final TextView name = (TextView) view.findViewById(R.id.profile_name);
+        final TextView phone_num = view.findViewById(R.id.profile_number);
+        final TextView rides_given = view.findViewById(R.id.profile_given);
+        final TextView rides_taken = view.findViewById(R.id.profile_taken);
+        UserRef = User.getReference("Users").child(mAuth.getUid().toString());
+        UserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String NameValue = dataSnapshot.child("Name").getValue(String.class);
+                Integer RidesTaken = dataSnapshot.child("Rides Taken").getValue(Integer.class);
+                Integer RidesGiven = dataSnapshot.child("Rides Given").getValue(Integer.class);
+                String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
+                name.setText("Name: " + NameValue);
+                phone_num.setText("Phone Number: " + PhoneValue);
+                rides_given.setText("Rides Given: " + String.valueOf(RidesGiven));
+                rides_taken.setText("Rides Taken: " + String.valueOf(RidesTaken));
+            }
 
-        name = getActivity().findViewById(R.id.profile_name);
-        phone_num = getActivity().findViewById(R.id.profile_number);
-        rides_given = getActivity().findViewById(R.id.profile_given);
-        rides_taken = getActivity().findViewById(R.id.profile_taken);
-
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
 
         return view;
     }
@@ -43,6 +74,35 @@ public class profileFragment extends Fragment {
     public void onCreate(Bundle save)
     {
         super.onCreate(save);
+        /*mAuth = FirebaseAuth.getInstance();
+        User = FirebaseDatabase.getInstance();
+        final TextView name = (TextView) getActivity().findViewById(R.id.profile_name);
+        final TextView phone_num = (TextView) getActivity().findViewById(R.id.profile_number);
+        final TextView rides_given = getActivity().findViewById(R.id.profile_given);
+        final TextView rides_taken = getActivity().findViewById(R.id.profile_taken);
+        UserRef = User.getReference("Users").child(mAuth.getUid().toString());
+        UserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String NameValue = dataSnapshot.child("Name").getValue(String.class);
+                //Integer RidesTaken = dataSnapshot.child("Rides Taken").getValue(Integer.class);
+                // Integer RidesGiven = dataSnapshot.child("Rides Given").getValue(Integer.class);
+                String PhoneValue = dataSnapshot.child("Phone").getValue(String.class);
+                name.setText(NameValue);
+                phone_num.setText(PhoneValue);
+                //rides_given.setText(RidesGiven);
+                //rides_taken.setText(RidesTaken);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                //Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });*/
+
         setRetainInstance(true);
     }
 

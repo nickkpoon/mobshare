@@ -18,6 +18,7 @@ public class myViewHolder extends RecyclerView.ViewHolder{
     TextView Type;
     TextView Destination;
     TextView Phone;
+    TextView Return_Date;
 
     listingItem displayRideshare;
 
@@ -32,15 +33,18 @@ public class myViewHolder extends RecyclerView.ViewHolder{
         Type = (TextView) itemView.findViewById(R.id.Type);
         Destination = (TextView) itemView.findViewById(R.id.Destination);
         Phone = (TextView) itemView.findViewById(R.id.Phone);
+        Return_Date = (TextView) itemView.findViewById(R.id.Return_Date);
     }
 
     public void setRS(listingItem rS) {
         this.displayRideshare = rS;
-        Price.setText(rS.getPrice());
-        Username.setText(rS.getName());
-        Date.setText(rS.getDate());
-        Type.setText(rS.getTripType());
-        Destination.setText(rS.getDestination());
-        Phone.setText(rS.getPhone());
+        Price.setText("Ride Price: " + rS.getPrice());
+        Username.setText("Driver: " + rS.getName());
+        Date.setText("Departure Date: " + rS.getDepart_Date() + "       " + "Departure Time: " + rS.getDepart_Time());
+        Type.setText("Trip Type: " + rS.getTrip_Type());
+        Destination.setText("Destination: " + rS.getDestination());
+        Phone.setText("Driver Phone Number: " + rS.getPhone_Number());
+        Return_Date.setText("Return Date: " + rS.getReturn_Date() + "       " + "Return Time: " + rS.getReturn_Time());
+
     }
 }

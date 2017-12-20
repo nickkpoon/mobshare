@@ -253,12 +253,12 @@ public class MainActivity extends AppCompatActivity
 //                    Log.d("NAME", NameValue);
 
                     String Price = newItem.getPrice();
-                    String Type = newItem.getTripType();
-                    String Date = newItem.getDate();
+                    String Type = newItem.getTrip_Type();
+                    String Date = newItem.getDepart_Date();
                     //Log.d("DATE:  ", Date);
 
                     String Destination = "LA";
-                    String Phone = newItem.getPhone();
+                    String Phone = newItem.getPhone_Number();
 
                     listItems.add(newItem);
                     //Log.d("LISTITEMS ADDED!  ", newItem.getDate());
