@@ -4,24 +4,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/profile_button"
-            android:icon="@drawable/ic_add_black_24dp"
+            android:icon="@drawable/ic_nav_profile"
             android:title="Profile" />
         <item
             android:id="@+id/listings_button"
-            android:icon="@drawable/ic_add_black_24dp"
+            android:icon="@drawable/ic_nav_listings"
             android:title="Listings" />
         <item
             android:id="@+id/history_button"
-            android:icon="@drawable/ic_add_black_24dp"
+            android:icon="@drawable/ic_nav_history"
             android:title="Ride History" />
         <item
             android:id="@+id/newRide_button"
             android:icon="@drawable/ic_add_black_24dp"
             android:title="Create Listing" />
-        <item
-            android:id="@+id/signOut_button"
-            android:icon="@drawable/ic_add_black_24dp"
-            android:title="Sign out" />
+
     </group>
 
 
