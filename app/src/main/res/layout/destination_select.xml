@@ -18,39 +18,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
+        <Button
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:text="Los Angeles"
             android:id="@+id/LosAngeles"
             />
-        <ImageButton
+        <Button
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorNavButton0"
+            android:background="@color/colorPrimaryDark"
             android:text="San Francisco"
             android:id="@+id/SanFrancisco"
 
 
             />
-        <ImageButton
+        <Button
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorNavButton1"
+            android:background="@color/colorPrimaryDark"
             android:text="San Diego"
             android:id="@+id/SanDiego"
 
 
             />
-        <ImageButton
+        <Button
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorNavHeader"
+            android:background="@color/colorPrimaryDark"
             android:text="Sacramento"
             android:id="@+id/Sacramento"
 

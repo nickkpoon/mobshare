@@ -2,7 +2,6 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.media.Image;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,10 +25,10 @@ import java.util.Locale;
 
 public class destinationFragment extends Fragment {
 
-    private ImageButton LosAngeles;
-    private ImageButton SanFrancisco;
-    private ImageButton Sacramento;
-    private ImageButton SanDiego;
+    private Button LosAngeles;
+    private Button SanFrancisco;
+    private Button Sacramento;
+    private Button SanDiego;
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
     private ArrayList<listingItem> Filtered = new ArrayList<listingItem>();
