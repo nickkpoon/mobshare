@@ -26,6 +26,15 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
         <item name="titleTextColor">@android:color/white</item>
+        <item name="android:calendarViewStyle">@style/Widget.CalendarView.Custom</item>
+
+    </style>
+
+    <style name="Widget.CalendarView.Custom" parent="android:Widget.CalendarView">
+        <item name="android:focusedMonthDateColor">@color/colorNavButton0</item>
+        <item name="android:weekNumberColor">@color/colorWhite</item>
+        <item name="android:weekDayTextAppearance">@color/colorWhite</item>
+        <item name="android:dateTextAppearance">@color/colorWhite</item>
     </style>
 
     <style name="AppTheme.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
