@@ -3,21 +3,16 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Locale;
 
 /**
  * Created by nickkpoon on 12/19/17.
@@ -25,10 +20,10 @@ import java.util.Locale;
 
 public class destinationFragment extends Fragment {
 
-    private Button LosAngeles;
-    private Button SanFrancisco;
-    private Button Sacramento;
-    private Button SanDiego;
+    private ImageButton LosAngeles;
+    private ImageButton SanFrancisco;
+    private ImageButton Sacramento;
+    private ImageButton  SanDiego;
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
     private ArrayList<listingItem> Filtered = new ArrayList<listingItem>();
@@ -46,7 +41,7 @@ public class destinationFragment extends Fragment {
 
         LosAngeles = view.findViewById(R.id.LosAngeles);
         SanFrancisco = view.findViewById(R.id.SanFrancisco);
-        Sacramento = view.findViewById(R.id.Sacramento);
+        Sacramento = view.findViewById(R.id.LasVegas);
         SanDiego = view.findViewById(R.id.SanDiego);
 
         LosAngeles.setOnClickListener(new View.OnClickListener() {
