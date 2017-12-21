@@ -167,12 +167,13 @@ public class newRideShare extends Fragment {
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 if(TextUtils.isEmpty(mDisplayDepartD.getText())) {
-                    dialog.getDatePicker().setMinDate(minDate);
+                    Toast.makeText(newRideShare.this.getActivity().getApplicationContext(), "Please Select a Departure Date First!", Toast.LENGTH_LONG).show();
                 }
                 else{
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.getDatePicker().setMinDate(dateResult);
+                    dialog.show();
                 }
-                dialog.show();
             }
         });
 
@@ -226,8 +227,15 @@ public class newRideShare extends Fragment {
                         getActivity(), mTimeSetListener2, hour, minute,
                         DateFormat.is24HourFormat(getActivity()));
 
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                if(TextUtils.isEmpty(mDisplayDepartT.getText())) {
+                    Toast.makeText(newRideShare.this.getActivity().getApplicationContext(), "Please Select a Departure Time First!", Toast.LENGTH_LONG).show();
+                }
+                else{
+
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
+                }
             }
         });
 
@@ -441,10 +449,10 @@ public class newRideShare extends Fragment {
             startActivity(intent);
         }
         else{
-                Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
-                        "Please Enter a Price!",
-                        Toast.LENGTH_LONG).show();
-            }
+            Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
+                    "Please Enter a Price!",
+                    Toast.LENGTH_LONG).show();
+        }
 
 
     }
