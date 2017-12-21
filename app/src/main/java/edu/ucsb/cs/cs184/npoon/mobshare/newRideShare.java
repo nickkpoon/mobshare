@@ -410,7 +410,7 @@ public class newRideShare extends Fragment {
                     final String id = databaserideShare.push().getKey();
 
                     UserRef = User.getReference("Users").child(mAuth.getUid().toString());
-                    UserRef.addValueEventListener(new ValueEventListener() {
+                    UserRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
@@ -419,7 +419,9 @@ public class newRideShare extends Fragment {
                             String UNameValue = dataSnapshot.child("UserName").getValue(String.class);
                             String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
 //                        rideShare rS = new rideShare(UNameValue, destination, tripType, price, date, PhoneValue, NameValue);
-
+                            Integer gave = dataSnapshot.child("Rides Given").getValue(Integer.class);
+                            UserRef.child("Rides Given").setValue(gave + 1);
+                            databaserideShare.child(id).child("Rides Given").setValue(gave + 1);
                             databaserideShare.child(id).child("Username").setValue(UNameValue);
                             databaserideShare.child(id).child("Name").setValue(NameValue);
                             databaserideShare.child(id).child("Destination").setValue(destination);
@@ -449,19 +451,22 @@ public class newRideShare extends Fragment {
                     // Failed to read value
                     //Log.w(TAG, "Failed to read value.", error.toException());}
 
+
                 } else {
                     final String id = databaserideShare.push().getKey();
 
                     UserRef = User.getReference("Users").child(mAuth.getUid().toString());
-                    UserRef.addValueEventListener(new ValueEventListener() {
+                    UserRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // This method is called once with the initial value and again
                             // whenever data at this location is updated.
                             String NameValue = dataSnapshot.child("Name").getValue(String.class);
                             String UNameValue = dataSnapshot.child("UserName").getValue(String.class);
-                            String PhoneValue = dataSnapshot.child("Phone").getValue(String.class);
-
+                            String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
+                            Integer gave = dataSnapshot.child("Rides Given").getValue(Integer.class);
+                            UserRef.child("Rides Given").setValue(gave + 1);
+                            databaserideShare.child(id).child("Rides Given").setValue(gave + 1);
                             databaserideShare.child(id).child("Username").setValue(UNameValue);
                             databaserideShare.child(id).child("Name").setValue(NameValue);
                             databaserideShare.child(id).child("Destination").setValue(destination);
@@ -491,14 +496,16 @@ public class newRideShare extends Fragment {
                     //Log.w(TAG, "Failed to read value.", error.toException());
                 }
             }
+
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
         }
         else{
                 Toast.makeText(newRideShare.this.getActivity().getApplicationContext(),
                         "Please Enter a Price!",
                         Toast.LENGTH_LONG).show();
             }
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
+
 
     }
 /*    private void launchMaps(){

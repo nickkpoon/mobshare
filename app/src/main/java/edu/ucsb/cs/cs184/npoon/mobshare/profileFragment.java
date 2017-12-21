@@ -56,7 +56,7 @@ public class profileFragment extends Fragment {
                 String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
                 name.setText("Name: " + NameValue);
                 phone_num.setText("Phone Number: " + PhoneValue);
-                rides_given.setText("Rides Given: " + String.valueOf(RidesGiven));
+                rides_given.setText("Rides Posted: " + String.valueOf(RidesGiven));
                 rides_taken.setText("Rides Taken: " + String.valueOf(RidesTaken));
             }
 

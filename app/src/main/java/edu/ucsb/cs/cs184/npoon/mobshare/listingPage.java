@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -62,7 +63,46 @@ public class listingPage extends Fragment implements listingsAdapter.OnItemClick
     @Override
     public void onItemClicked(View v) {
         dialogFragmentCard df= new dialogFragmentCard();
-        df.show(getFragmentManager(), "Dialog");
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference MyRef = db.getReference("Users");
+        TextView name = v.findViewById(R.id.Name);
+        final String Name = name.getText().toString().substring(8);
+        TextView number = v.findViewById(R.id.Phone);
+        final String Phone = number.getText().toString().substring(8);
+        //Log.d("Name: ", Name);
+       // Log.d("Phone Number:", Phone);
+        MyRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                    String Username = snapshot.child("Name").getValue(String.class);
+                    String PhoneNumber = snapshot.child("Phone Number").getValue(String.class);
+                    Integer rides = snapshot.child("Rides Given").getValue(Integer.class);
+                    String Email = snapshot.child("UserName").getValue(String.class);
+                    if (Username.equals(Name) && PhoneNumber.equals(Phone)){
+                        //Integer rides = dataSnapshot.child("Rides Given").getValue(Integer.class);
+                       // String Email = dataSnapshot.child("Username").getValue(String.class);
+                        Bundle args = new Bundle();
+                        args.putString("Phone", Phone);
+                        args.putString("Username", Email);
+                        args.putString("RealName", Name);
+                        args.putInt("Rides", rides);
+                        dialogFragmentCard df= new dialogFragmentCard();
+                        df.setArguments(args);
+                        df.show(getFragmentManager(), "Dialog");
+
+                    }
+                }
+            }
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            // Failed to read value
+                            //Log.w(TAG , "Failed to read value.",error.toException());
+                        }
+                    });
     }
 
 }
