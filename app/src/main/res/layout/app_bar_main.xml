@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:text="mobshare"
             android:textColor="@color/colorWhite"
-            android:id="@+id/mytext"
+            android:id="@+id/appTitle"
             android:textSize="18sp" />
 
         </android.support.v7.widget.Toolbar>

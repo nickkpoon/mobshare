@@ -2,6 +2,7 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Display;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class destinationFragment extends Fragment {
     private ImageButton SanFrancisco;
     private ImageButton LasVegas;
     private ImageButton  SanDiego;
+    private TextView title;
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
     private ArrayList<listingItem> Filtered = new ArrayList<listingItem>();
@@ -43,6 +46,10 @@ public class destinationFragment extends Fragment {
         SanFrancisco = view.findViewById(R.id.SanFrancisco);
         LasVegas = view.findViewById(R.id.LasVegas);
         SanDiego = view.findViewById(R.id.SanDiego);
+        title = view.findViewById(R.id.dest_title);
+
+        Typeface logoFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/TitilliumWeb-ExtraLight.ttf");
+        title.setTypeface(logoFont);
 
         LosAngeles.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +109,7 @@ public class destinationFragment extends Fragment {
                 Toast.makeText(getActivity(), "LA", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
-                    if(listItems.get(i) != null)
+                    if(listItems.get(i).getDestination() != null)
                     {
                         if(listItems.get(i).getDestination().equals("Los Angeles") )
                         {
@@ -121,7 +128,7 @@ public class destinationFragment extends Fragment {
                 Toast.makeText(getActivity(), "SF", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
-                    if(listItems.get(i) != null)
+                    if(listItems.get(i).getDestination() != null)
                     {
                         if(listItems.get(i).getDestination().equals("San Francisco" )){
                             Filtered.add(listItems.get(i));
@@ -137,7 +144,7 @@ public class destinationFragment extends Fragment {
                 Toast.makeText(getActivity(), "LV", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
-                    if(listItems.get(i) != null)
+                    if(listItems.get(i).getDestination() != null)
                     {
                         if(listItems.get(i).getDestination().equals("Las Vegas")){
                             Filtered.add(listItems.get(i));
@@ -157,7 +164,7 @@ public class destinationFragment extends Fragment {
                 Toast.makeText(getActivity(), "SD", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
-                    if(listItems.get(i) != null)
+                    if(listItems.get(i).getDestination() != null)
                     {
                         if(listItems.get(i).getDestination().equals("San Diego") ){
                             Filtered.add(listItems.get(i));

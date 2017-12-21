@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -64,6 +65,7 @@ public class newRideShare extends Fragment {
     Spinner spinnerDestination;
     Spinner spinnerTripType;
     Button buttonSubmit;
+    TextView title;
 
     private FirebaseAuth mAuth;
 
@@ -89,6 +91,12 @@ public class newRideShare extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         View v = getView();
+
+        title=v.findViewById(R.id.rideshare_title);
+        Typeface logoFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/TitilliumWeb-ExtraLight.ttf");
+        title.setTypeface(logoFont);
+
+
         editTextPrice = v.findViewById(R.id.editTextPrice);
 
         spinnerDestination = v.findViewById(R.id.tripDestination);

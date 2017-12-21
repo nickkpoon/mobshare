@@ -3,6 +3,7 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.support.design.widget.NavigationView;
@@ -60,6 +61,11 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
         User = FirebaseDatabase.getInstance();
+
+        TextView appTitle = findViewById(R.id.appTitle);
+        Typeface logoFont = Typeface.createFromAsset(getAssets(), "fonts/TitilliumWeb-ExtraLight.ttf");
+        appTitle.setTypeface(logoFont);
+
 
 
 

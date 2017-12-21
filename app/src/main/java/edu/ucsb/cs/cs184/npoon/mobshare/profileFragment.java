@@ -1,6 +1,7 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
@@ -41,6 +42,11 @@ public class profileFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         User = FirebaseDatabase.getInstance();
         final TextView name = (TextView) view.findViewById(R.id.profile_name);
+
+        Typeface logoFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/TitilliumWeb-ExtraLight.ttf");
+        name.setTypeface(logoFont);
+
+
         final TextView phone_num = view.findViewById(R.id.profile_number);
         final TextView rides_given = view.findViewById(R.id.profile_given);
         //final TextView rides_taken = view.findViewById(R.id.profile_taken);

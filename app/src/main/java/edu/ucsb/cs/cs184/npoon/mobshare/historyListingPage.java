@@ -1,6 +1,7 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -52,6 +54,10 @@ public class historyListingPage extends Fragment {
 
         //initializeData(dest);
         View v = getView();
+        TextView titleLogo = v.findViewById(R.id.history_title);
+        Typeface logoFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/TitilliumWeb-ExtraLight.ttf");
+        titleLogo.setTypeface(logoFont);
+
         RecyclerView recyclerView = v.findViewById(R.id.recyclerViewHist);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(historyListingPage.this.getActivity().getApplicationContext()));

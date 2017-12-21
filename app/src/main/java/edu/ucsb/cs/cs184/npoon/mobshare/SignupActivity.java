@@ -43,7 +43,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         TextView loginLogo = (TextView) findViewById(R.id.signup_logo);
-        Typeface logoFont = Typeface.createFromAsset(getAssets(), "fonts/raleway_semibold.ttf");
+        Typeface logoFont = Typeface.createFromAsset(getAssets(), "fonts/TitilliumWeb-ExtraLight.ttf");
         loginLogo.setTypeface(logoFont);
 
         login = findViewById(R.id.signup_email);
