@@ -94,7 +94,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
-                    android:text="Return Date"
                     android:textColor="@color/cardViewTitle"
                     />
 
@@ -104,7 +103,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:textSize="12sp"
-                    android:text="Return Time"
                     android:textColor="@color/cardViewTime"                    />
 
 

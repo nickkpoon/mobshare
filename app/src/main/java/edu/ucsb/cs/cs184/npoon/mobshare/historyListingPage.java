@@ -151,7 +151,7 @@ public class historyListingPage extends Fragment {
                 break;
 
             case 1:
-                Toast.makeText(getActivity(), "SF BUNDLE", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SF BUNDLE", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i <= 10; i++) {
                     historyItem newItem = new historyItem(
                             "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "D","D", "D");
@@ -162,7 +162,7 @@ public class historyListingPage extends Fragment {
                 break;
 
             case 2:
-                Toast.makeText(getActivity(), "SAC BUNDLE", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SAC BUNDLE", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i <= 10; i++) {
                     historyItem newItem = new historyItem(
                             "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "D","D", "D");
@@ -171,7 +171,7 @@ public class historyListingPage extends Fragment {
                 break;
 
             case 3:
-                Toast.makeText(getActivity(), "SD BUNDLE", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SD BUNDLE", Toast.LENGTH_SHORT).show();
                 for (int i = 0; i <= 10; i++) {
                     historyItem newItem = new historyItem(
                             "One WAY", "$" + (i + 100), (i) + "/" + (i) + "/" + (i), "SF", "D","D", "D");

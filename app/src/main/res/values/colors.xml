@@ -6,13 +6,13 @@
     <color name="splash_background">#222222</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorFadedWhite">#999999</color>
-    <color name="colorNavHeader">#23283B</color>
+    <color name="colorNavHeader">#222222</color>
     <color name="colorNavTint">#EEEEEE</color>
     <color name="colorNavButton0">#50C26D</color>
-    <color name="colorNavButton1">#E8A178</color>
+    <color name="colorNavButton1">#D6254F</color>
     <color name="cardViewTitle">#CCB05A</color>
     <color name="cardViewPrice">#69CF5A</color>
-    <color name="colorNavTitle">#23283B</color>
+    <color name="colorNavTitle">#222222</color>
     <color name="cardViewTime">#71D0BA</color>
     <color name="dialogCallButton">#5FB242</color>
     <color name="dialogEmailButton">#C94634</color>

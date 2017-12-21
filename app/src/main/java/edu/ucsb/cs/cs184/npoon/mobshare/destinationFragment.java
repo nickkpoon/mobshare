@@ -110,7 +110,7 @@ public class destinationFragment extends Fragment {
         switch (Destination)
         {
             case 0:
-                Toast.makeText(getActivity(), "LA", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "LA", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
                     if(listItems.get(i).getDestination() != null)
@@ -129,7 +129,7 @@ public class destinationFragment extends Fragment {
                 break;
 
             case 1:
-                Toast.makeText(getActivity(), "SF", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SF", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
                     if(listItems.get(i).getDestination() != null)
@@ -145,7 +145,7 @@ public class destinationFragment extends Fragment {
                 break;
 
             case 2:
-                Toast.makeText(getActivity(), "LV", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "LV", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
                     if(listItems.get(i).getDestination() != null)
@@ -165,7 +165,7 @@ public class destinationFragment extends Fragment {
                 break;
 
             case 3:
-                Toast.makeText(getActivity(), "SD", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SD", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
                     if(listItems.get(i).getDestination() != null)

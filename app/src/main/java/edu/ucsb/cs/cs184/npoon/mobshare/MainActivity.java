@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.profile_button)
         {
-            Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
 
             Fragment newFragment;
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference MyRef = db.getReference("rideShare");
 
-        Toast.makeText(this, "LA BUNDLE", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "LA BUNDLE", Toast.LENGTH_SHORT).show();
         MyRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
