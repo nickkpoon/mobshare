@@ -31,8 +31,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Time;
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import static android.content.ContentValues.TAG;
 
@@ -105,6 +107,7 @@ public class newRideShare extends Fragment {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
                 long minDate = cal.getTime().getTime();
 
+
                 DatePickerDialog dialog = new DatePickerDialog(
                         getActivity(),
                         android.R.style.Theme_Holo_Dialog,
@@ -123,7 +126,18 @@ public class newRideShare extends Fragment {
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
                 String date = "Departure Date:  " + month + "/" + day + "/" + year;
-//                dateResult.
+
+
+                SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+                Date dateT = null;
+                try {
+                    dateT = (Date)formatter.parse(month + "/" + day + "/" + year);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                long mills = dateT.getTime();
+                dateResult = mills;
+
                 mDisplayDepartD.setText(date);
             }
         };
@@ -135,6 +149,7 @@ public class newRideShare extends Fragment {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
+                long minDate = cal.getTime().getTime();
 
 
 
@@ -145,6 +160,12 @@ public class newRideShare extends Fragment {
                         mDateSetListener2,
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                if(TextUtils.isEmpty(mDisplayDepartD.getText())) {
+                    dialog.getDatePicker().setMinDate(minDate);
+                }
+                else{
+                    dialog.getDatePicker().setMinDate(dateResult);
+                }
                 dialog.show();
             }
         });
