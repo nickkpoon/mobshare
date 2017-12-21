@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ import static android.content.ContentValues.TAG;
 
 public class newRideShare extends Fragment {
 
+
     private TextView mDisplayDepartD;
     private TextView mDisplayReturnD;
 
@@ -77,6 +79,10 @@ public class newRideShare extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        getActivity().setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         databaserideShare = FirebaseDatabase.getInstance().getReference("rideShare");
         User = FirebaseDatabase.getInstance();
