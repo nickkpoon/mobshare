@@ -43,7 +43,7 @@ public class profileFragment extends Fragment {
         final TextView name = (TextView) view.findViewById(R.id.profile_name);
         final TextView phone_num = view.findViewById(R.id.profile_number);
         final TextView rides_given = view.findViewById(R.id.profile_given);
-        final TextView rides_taken = view.findViewById(R.id.profile_taken);
+        //final TextView rides_taken = view.findViewById(R.id.profile_taken);
         UserRef = User.getReference("Users").child(mAuth.getUid().toString());
         UserRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,10 +54,10 @@ public class profileFragment extends Fragment {
                 Integer RidesTaken = dataSnapshot.child("Rides Taken").getValue(Integer.class);
                 Integer RidesGiven = dataSnapshot.child("Rides Given").getValue(Integer.class);
                 String PhoneValue = dataSnapshot.child("Phone Number").getValue(String.class);
-                name.setText("Name: " + NameValue);
-                phone_num.setText("Phone Number: " + PhoneValue);
-                rides_given.setText("Rides Posted: " + String.valueOf(RidesGiven));
-                rides_taken.setText("Rides Taken: " + String.valueOf(RidesTaken));
+                name.setText(NameValue);
+                phone_num.setText("Number: " + PhoneValue);
+                rides_given.setText("Rides Given: " + String.valueOf(RidesGiven));
+                //rides_taken.setText("Rides Taken: " + String.valueOf(RidesTaken));
             }
 
             @Override

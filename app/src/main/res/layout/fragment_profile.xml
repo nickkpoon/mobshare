@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@color/colorPrimaryDark"
+    >
 
 
     <LinearLayout
@@ -11,36 +13,41 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:background="@color/colorPrimaryDark"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/account"
+            android:layout_gravity="center"/>
 
         <TextView
             android:id="@+id/profile_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="25dp"
             android:text="name" />
 
         <TextView
             android:id="@+id/profile_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="num" />
 
         <TextView
             android:id="@+id/profile_given"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="rides given" />
 
-        <TextView
-            android:id="@+id/profile_taken"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="rides taken" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
