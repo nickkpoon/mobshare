@@ -24,7 +24,7 @@ public class dialogFragmentCard extends DialogFragment {
 
         Dialog builder = new Dialog(getActivity());
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        builder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        builder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.DKGRAY));
         builder.setContentView(view);
         return builder;
 

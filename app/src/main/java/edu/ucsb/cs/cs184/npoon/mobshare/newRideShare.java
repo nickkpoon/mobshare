@@ -40,75 +40,7 @@ import static android.content.ContentValues.TAG;
  * Created by Julio on 12/3/2017.
  */
 
-
-/*
-
-//Old code as an activity, DO NOT DELETE!!!
-public class newRideShare extends AppCompatActivity {
-
-    double sourceLatitude = 41.008238;
-    double sourceLongitude = 28.978359;
-    double destinationLatitude = 37.983810;
-    double destinationLongitude = 23.727539;
-
-
-    EditText editTextDate;
-    EditText editTextPrice;
-    Spinner spinnerTripType;
-    Button buttonSubmit;
-    Button buttonLaunchMaps;
-    TextView textViewDest;
-
-    DatabaseReference databaserideShare;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_rideshare);
-
-        databaserideShare = FirebaseDatabase.getInstance().getReference("rideShare");
-
-        editTextDate =      findViewById(R.id.editTextDate);
-        editTextPrice =     findViewById(R.id.editTextPrice);
-
-        spinnerTripType = findViewById(R.id.tripType);
-
-        buttonSubmit = (Button) findViewById(R.id.buttonSubmit);
-
-        buttonLaunchMaps = findViewById(R.id.buttonLaunchMaps);
-        textViewDest = findViewById(R.id.textViewDest);
-
-        buttonLaunchMaps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                launchMaps();
-
-                Log.d("ADebugTag", "Value: " + Double.toString(destinationLatitude));
-
-            }
-        });
-
-        buttonSubmit.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                addRideShare();
-            }
-
-        });
-
-
-    }
-*/
-
 public class newRideShare extends Fragment {
-
-/*
-    double sourceLatitude = 41.008238;
-    double sourceLongitude = 28.978359;
-    double destinationLatitude = 37.983810;
-    double destinationLongitude = 23.727539;
-*/
 
     private TextView mDisplayDepartD;
     private TextView mDisplayReturnD;
@@ -121,15 +53,13 @@ public class newRideShare extends Fragment {
 
     private TimePickerDialog.OnTimeSetListener mTimeSetListener1;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener2;
+    private long dateResult;
 
-//    EditText editTextDate;
+
     EditText editTextPrice;
     Spinner spinnerDestination;
     Spinner spinnerTripType;
     Button buttonSubmit;
-//  Button buttonLaunchMaps;
-//    TextView textViewDest;
-
 
     private FirebaseAuth mAuth;
 
@@ -151,7 +81,6 @@ public class newRideShare extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         View v = getView();
-//        editTextDate =      v.findViewById(R.id.editTextDate);
         editTextPrice = v.findViewById(R.id.editTextPrice);
 
         spinnerDestination = v.findViewById(R.id.tripDestination);
@@ -174,6 +103,7 @@ public class newRideShare extends Fragment {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
+                long minDate = cal.getTime().getTime();
 
                 DatePickerDialog dialog = new DatePickerDialog(
                         getActivity(),
@@ -181,6 +111,7 @@ public class newRideShare extends Fragment {
                         mDateSetListener1,
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getDatePicker().setMinDate(minDate);
                 dialog.show();
             }
         });
@@ -191,7 +122,8 @@ public class newRideShare extends Fragment {
                 month = month + 1;
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
-                String date = month + "/" + day + "/" + year;
+                String date = "Departure Date:  " + month + "/" + day + "/" + year;
+//                dateResult.
                 mDisplayDepartD.setText(date);
             }
         };
@@ -203,6 +135,9 @@ public class newRideShare extends Fragment {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
+
+
+
 
                 DatePickerDialog dialog = new DatePickerDialog(
                         getActivity(),
@@ -220,7 +155,7 @@ public class newRideShare extends Fragment {
                 month = month + 1;
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
-                String date = month + "/" + day + "/" + year;
+                String date = "Return Date:  " + month + "/" + day + "/" + year;
                 mDisplayReturnD.setText(date);
             }
         };
@@ -248,7 +183,7 @@ public class newRideShare extends Fragment {
 
                 String time = getTime(hour, minute);
 
-                mDisplayDepartT.setText(time);
+                mDisplayDepartT.setText("Departure Time:  " + time);
             }
         };
 
@@ -275,15 +210,13 @@ public class newRideShare extends Fragment {
 
                 String time = getTime(hour, minute);
 
-                mDisplayReturnT.setText(time);
+                mDisplayReturnT.setText("Return Time:  " + time);
 
             }
         };
 
         final String[] spinnerCheck_array = getResources().getStringArray(R.array.items);
 
-//        final int currentSpinVal = spinnerTripType.getSelectedItemPosition();
-//        spinnerTripType.setOnItemSelectedListener(this);
 
 
         spinnerTripType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -319,26 +252,6 @@ public class newRideShare extends Fragment {
 
         });
 
-
-
-//        buttonLaunchMaps =  v.findViewById(R.id.buttonLaunchMaps);
-//        textViewDest =      v.findViewById(R.id.textViewDest);
-
-/*
-        buttonLaunchMaps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                launchMaps();
-
-                Log.d("ADebugTag", "Value: " + Double.toString(destinationLatitude));
-
-            }
-        });
-*/
-
-
-
     }
 
     private String getTime(int hr, int min) {
@@ -357,11 +270,11 @@ public class newRideShare extends Fragment {
         final String price = editTextPrice.getText().toString().trim();
         final String tripType = spinnerTripType.getSelectedItem().toString();
 
-        final String dateD = mDisplayDepartD.getText().toString().trim();
-        final String dateR = mDisplayReturnD.getText().toString().trim();
+        final String dateD = mDisplayDepartD.getText().toString().trim().replace("Departure Date:  ","");
+        final String dateR = mDisplayReturnD.getText().toString().trim().replace("Return Date:  ","");
 
-        final String timeD = mDisplayDepartT.getText().toString().trim();
-        final String timeR = mDisplayReturnT.getText().toString().trim();
+        final String timeD = mDisplayDepartT.getText().toString().trim().replace("Departure Time:  ","");
+        final String timeR = mDisplayReturnT.getText().toString().trim().replace("Return Time:  ","");
 
         UserRef = User.getReference("Users").child(mAuth.getUid().toString());
         UserRef.addValueEventListener(new ValueEventListener() {
@@ -501,15 +414,6 @@ public class newRideShare extends Fragment {
         startActivity(intent);
 
     }
-/*    private void launchMaps(){
-
-        String uri = "http://maps.google.com/maps?saddr=" + sourceLatitude + "," + sourceLongitude + "&daddr=" + destinationLatitude + "," + destinationLongitude;
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-        intent.setPackage("com.google.android.apps.maps");
-        startActivity(intent);
-    }*/
-
-
 
     public class rideShare {
 
