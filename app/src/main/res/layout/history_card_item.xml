@@ -16,47 +16,104 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <TextView
-                android:id="@+id/DestinationHist"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Destination" />
+                android:orientation="horizontal"
+                >
 
-            <TextView
-                android:id="@+id/TypeHist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Type" />
+                <TextView
+                    android:id="@+id/Depart_DateHist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Departure Date"
+                    android:textSize="20sp"
+                    android:textColor="@color/cardViewTitle"
+                    />
 
-            <TextView
-                android:id="@+id/Depart_DateHist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Depart Date" />
+                <TextView
+                    android:id="@+id/Depart_TimeHist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Depart Time"
+                    android:textSize="12sp"
+                    android:textColor="@color/cardViewTime"
+                    />
 
-            <TextView
-                android:id="@+id/Depart_TimeHist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Depart Time" />
+                <TextView
+                    android:id="@+id/PriceHist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:layout_weight="1"
+                    android:textColor="@color/cardViewPrice"
+                    android:gravity="right"/>
+                
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/Return_DateHist"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Return Date" />
+                android:orientation="horizontal"
+                >
 
-            <TextView
-                android:id="@+id/Return_TimeHist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Return Time" />
+                <TextView
+                    android:id="@+id/DestinationHist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Destination" />
 
-            <TextView
-                android:id="@+id/PriceHist"
+                <TextView
+                    android:id="@+id/TypeHist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="Type" />
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+            
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price" />
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/Return_DateHist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Return Date"
+                    android:textColor="@color/cardViewTitle"
+                    />
+
+                <TextView
+                    android:id="@+id/Return_TimeHist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="12sp"
+                    android:text="Return Time"
+                    android:textColor="@color/cardViewTime"                    />
+
+
+
+            </LinearLayout>
+
+
+
+
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

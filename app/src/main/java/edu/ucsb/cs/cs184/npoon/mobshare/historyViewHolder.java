@@ -46,23 +46,25 @@ public class historyViewHolder extends RecyclerView.ViewHolder{
 
     }
 
-    public void setRS(historyItem rS) {
+    public void setRS(historyItem rS, Boolean RT) {
         this.displayRideshare = rS;
 
 
 //        Username.setText("Driver: " + rS.getName());
-        DestinationHist.setText("Destination: " + rS.getDestination());
-        TypeHist.setText("Trip Type: " + rS.getTrip_Type());
+        DestinationHist.setText(rS.getDestination());
+        TypeHist.setText(rS.getTrip_Type());
 
-        Depart_DateHist.setText("Departure Date: " + rS.getDepart_Date());
-        Depart_TimeHist.setText("Departure Time: " + rS.getDepart_Time());
+        Depart_DateHist.setText("Departure: " + rS.getDepart_Date());
+        Depart_TimeHist.setText(rS.getDepart_Time());
 
 
 //        Phone.setText("Driver Phone Number: " + rS.getPhone_Number());
-        Return_DateHist.setText("Return Date: " + rS.getReturn_Date());
-        Return_TimeHist.setText("Return Time: " + rS.getReturn_Time());
+        if(RT) {
+            Return_DateHist.setText("Return: " + rS.getReturn_Date());
+            Return_TimeHist.setText(rS.getReturn_Time());
+        }
 
-        PriceHist.setText("Ride Price: " + rS.getPrice());
+        PriceHist.setText("$" + rS.getPrice());
 
     }
 }

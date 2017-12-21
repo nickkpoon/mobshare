@@ -25,7 +25,23 @@ public class historyAdapter extends RecyclerView.Adapter<historyViewHolder> {
 
     @Override
     public void onBindViewHolder(historyViewHolder historyViewHolder, int i) {
-        historyViewHolder.setRS(histItems.get(i));
+
+        Boolean RT;
+
+        if(histItems.get(i).getReturn_Date().equals("N/A"))
+        {
+            Log.d(TAG, histItems.get(i).getReturn_Date());
+
+            Log.d(TAG, "RT = FALSE");
+
+            RT = false;
+        }
+
+        else
+        {
+            RT = true;
+        }
+        historyViewHolder.setRS(histItems.get(i), RT);
     }
 
     @Override
