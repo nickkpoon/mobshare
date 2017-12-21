@@ -22,10 +22,13 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 
-public class listingPage extends Fragment {
+public class listingPage extends Fragment implements listingsAdapter.OnItemClickListener{
     //private static final String TAG = MyActivity.class.getName();
     private List<listingItem> listItems;
     private int dest;
+
+    private listingsAdapter.OnItemClickListener listener;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,10 +57,15 @@ public class listingPage extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(listingPage.this.getActivity().getApplicationContext()));
 
-        listingsAdapter adapter = new listingsAdapter(listItems);
+        listingsAdapter adapter = new listingsAdapter(this, listItems, getActivity());
         recyclerView.setAdapter(adapter);
 
 
+    }
+    @Override
+    public void onItemClicked(View v) {
+        dialogFragmentCard df= new dialogFragmentCard();
+        df.show(getFragmentManager(), "Dialog");
     }
 
 
@@ -174,5 +182,9 @@ public class listingPage extends Fragment {
         }
     }
 
+//    @Override
+//    public void onItemClicked(View v) {
+//
+//    }
 }
 

@@ -20,10 +20,11 @@ public class myViewHolder extends RecyclerView.ViewHolder{
     TextView Phone;
     TextView Return_Date;
 
+
     listingItem displayRideshare;
 
 
-    public myViewHolder(View itemView) {
+    public myViewHolder(View itemView, final listingsAdapter.OnItemClickListener listener) {
         super(itemView);
 
         cv = (CardView) itemView.findViewById(R.id.cv);
@@ -34,6 +35,13 @@ public class myViewHolder extends RecyclerView.ViewHolder{
         Destination = (TextView) itemView.findViewById(R.id.Destination);
         Phone = (TextView) itemView.findViewById(R.id.Phone);
         Return_Date = (TextView) itemView.findViewById(R.id.Return_Date);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClicked(v);
+            }
+        });
 
     }
 

@@ -1,14 +1,11 @@
 package edu.ucsb.cs.cs184.npoon.mobshare;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +18,23 @@ import static android.content.ContentValues.TAG;
 
 public class listingsAdapter extends RecyclerView.Adapter<myViewHolder> {
 
+    public interface OnItemClickListener {
+        void onItemClicked(View v);
+    }
+    private OnItemClickListener listener;
+
+    private Context context;
+
     private List<listingItem> listItems = new ArrayList<listingItem>();
 
-    public listingsAdapter(List<listingItem> rShare) {
+    public listingsAdapter(OnItemClickListener listener, List <listingItem> rShare, Context contextList) {
+        super();
+        this.listener = listener;
 
         this.listItems = rShare;
+
+        this.context = context;
+
     }
 
     @Override
@@ -55,7 +64,7 @@ public class listingsAdapter extends RecyclerView.Adapter<myViewHolder> {
     @Override
     public myViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_item, viewGroup, false);
-        myViewHolder vh = new myViewHolder(v);
+        myViewHolder vh = new myViewHolder(v, listener);
         return vh;
     }
 
