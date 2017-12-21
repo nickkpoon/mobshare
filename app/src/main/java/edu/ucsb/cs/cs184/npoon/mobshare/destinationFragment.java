@@ -22,7 +22,7 @@ public class destinationFragment extends Fragment {
 
     private ImageButton LosAngeles;
     private ImageButton SanFrancisco;
-    private ImageButton Sacramento;
+    private ImageButton LasVegas;
     private ImageButton  SanDiego;
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
@@ -41,7 +41,7 @@ public class destinationFragment extends Fragment {
 
         LosAngeles = view.findViewById(R.id.LosAngeles);
         SanFrancisco = view.findViewById(R.id.SanFrancisco);
-        Sacramento = view.findViewById(R.id.LasVegas);
+        LasVegas = view.findViewById(R.id.LasVegas);
         SanDiego = view.findViewById(R.id.SanDiego);
 
         LosAngeles.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class destinationFragment extends Fragment {
             }
         });
 
-        Sacramento.setOnClickListener(new View.OnClickListener() {
+        LasVegas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToFragment(2);
