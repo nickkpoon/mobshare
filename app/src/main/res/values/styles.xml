@@ -21,20 +21,22 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
         <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
         <item name="android:textColorHint">@color/colorWhite</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="titleTextColor">@android:color/white</item>
+    </style>
 
+    <style name="AppTheme.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:titleTextStyle">@style/AppTheme.ActionBar.Text</item>
     </style>
     <!--use item name="drawerArrowStyle" if you are using dark primaryColor in your app, else remove it-->
     <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">false</item>
         <item name="color">@android:color/white</item>
     </style>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.ActionBar.Text" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/colorWhite</item>
