@@ -2,6 +2,7 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,6 +35,9 @@ public class destinationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        getActivity().setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         View view = inflater.inflate(R.layout.destination_select, container, false);
 
