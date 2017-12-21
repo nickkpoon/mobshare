@@ -2,15 +2,18 @@ package edu.ucsb.cs.cs184.npoon.mobshare;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.media.Image;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +27,10 @@ import java.util.Locale;
 
 public class destinationFragment extends Fragment {
 
-    private TextView LosAngeles;
-    private TextView SanFrancisco;
-    private TextView Sacramento;
-    private TextView SanDiego;
+    private ImageButton LosAngeles;
+    private ImageButton SanFrancisco;
+    private ImageButton Sacramento;
+    private ImageButton SanDiego;
 
     private ArrayList<listingItem> listItems = new ArrayList<listingItem>();
     private ArrayList<listingItem> Filtered = new ArrayList<listingItem>();
@@ -35,7 +38,14 @@ public class destinationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.destination_select, container, false);
+
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        int stageHeight = display.getHeight();
+
+
+
         LosAngeles = view.findViewById(R.id.LosAngeles);
         SanFrancisco = view.findViewById(R.id.SanFrancisco);
         Sacramento = view.findViewById(R.id.Sacramento);
@@ -98,11 +108,18 @@ public class destinationFragment extends Fragment {
             case 0:
                 Toast.makeText(getActivity(), "LA", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
-                    if(listItems.get(i).getDestination().equals("Los Angeles") ){
-                        //Log.d("Destination: ", listItems.get(i).getDestination());
-                        Filtered.add(listItems.get(i));
+
+                    if(listItems.get(i) != null)
+                    {
+                        if(listItems.get(i).getDestination().equals("Los Angeles") )
+                        {
+                            //Log.d("Destination: ", listItems.get(i).getDestination());
+                             Filtered.add(listItems.get(i));
+
+                        }
 
                     }
+
                 }
                 bundle.putInt("Dest", 0);
                 break;
@@ -110,9 +127,15 @@ public class destinationFragment extends Fragment {
             case 1:
                 Toast.makeText(getActivity(), "SF", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
-                    if(listItems.get(i).getDestination().equals("San Francisco" )){
-                        Filtered.add(listItems.get(i));
+
+                    if(listItems.get(i) != null)
+                    {
+                        if(listItems.get(i).getDestination().equals("San Francisco" )){
+                            Filtered.add(listItems.get(i));
+                        }
+
                     }
+
                 }
                 bundle.putInt("Dest", 1);
                 break;
@@ -120,9 +143,19 @@ public class destinationFragment extends Fragment {
             case 2:
                 Toast.makeText(getActivity(), "SAC", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
-                    if(listItems.get(i).getDestination().equals("Sacramento")){
-                        Filtered.add(listItems.get(i));
+
+                    if(listItems.get(i) != null)
+                    {
+                        if(listItems.get(i).getDestination().equals("Sacramento")){
+                            Filtered.add(listItems.get(i));
+                        }
+
                     }
+
+
+
+
+
                 }
                 bundle.putInt("Dest", 2);
                 break;
@@ -130,9 +163,19 @@ public class destinationFragment extends Fragment {
             case 3:
                 Toast.makeText(getActivity(), "SD", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
-                    if(listItems.get(i).getDestination().equals("San Diego") ){
-                        Filtered.add(listItems.get(i));
+
+                    if(listItems.get(i) != null)
+                    {
+                        if(listItems.get(i).getDestination().equals("San Diego") ){
+                            Filtered.add(listItems.get(i));
+                        }
+
                     }
+
+
+
+
+
                 }
                 bundle.putInt("Dest", 3);
                 break;
