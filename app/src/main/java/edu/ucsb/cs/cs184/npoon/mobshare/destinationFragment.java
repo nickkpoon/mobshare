@@ -134,12 +134,12 @@ public class destinationFragment extends Fragment {
                 break;
 
             case 2:
-                Toast.makeText(getActivity(), "SAC", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "LV", Toast.LENGTH_SHORT).show();
                 for(int i = 0; i<listItems.size(); i++){
 
                     if(listItems.get(i) != null)
                     {
-                        if(listItems.get(i).getDestination().equals("Sacramento")){
+                        if(listItems.get(i).getDestination().equals("Las Vegas")){
                             Filtered.add(listItems.get(i));
                         }
 
