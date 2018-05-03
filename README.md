@@ -1,4 +1,4 @@
-# Project Final Write Up: Mobshare
+# Mobshare
 ### Members: Nicholas Poon, Steven Tedsen, Julio Maldonado
 
 ## Problem Statement:
