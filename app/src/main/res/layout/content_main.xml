@@ -10,7 +10,7 @@
     android:layout_marginBottom="50dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main"
-    tools:context="edu.ucsb.cs.cs184.npoon.mobshare.MainActivity">
+    tools:context="edu.ucsb.cs.mobile.npoon.mobshare.MainActivity">
 
     <FrameLayout
         android:id="@+id/fragment"

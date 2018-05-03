@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/splash_background"
-    tools:context="edu.ucsb.cs.cs184.npoon.mobshare.WelcomeScreen"
+    tools:context="edu.ucsb.cs.mobile.npoon.mobshare.WelcomeScreen"
     tools:layout_editor_absoluteY="81dp">
 
     <ImageView

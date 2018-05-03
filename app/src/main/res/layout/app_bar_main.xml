@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="edu.ucsb.cs.cs184.npoon.mobshare.MainActivity">
+    tools:context="edu.ucsb.cs.mobile.npoon.mobshare.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"

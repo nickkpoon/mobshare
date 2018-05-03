@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs184.npoon.mobshare;
+package edu.ucsb.cs.mobile.npoon.mobshare;
 
 import android.app.Fragment;
 import android.graphics.Typeface;

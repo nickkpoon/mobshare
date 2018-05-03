@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.ucsb.cs.cs184.npoon.mobshare">
+    package="edu.ucsb.cs.mobile.npoon.mobshare">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -29,7 +29,7 @@
             android:value="AIzaSyBqiy3NmajD9b5sX-EbaHdrO84qPcUbts8" />
 
         <activity
-            android:name=".SplashScreen"
+            android:name="edu.ucsb.cs.mobile.npoon.mobshare.SplashScreen"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -39,32 +39,32 @@
         </activity>
 
         <activity
-            android:name=".WelcomeScreen"
+            android:name="edu.ucsb.cs.mobile.npoon.mobshare.WelcomeScreen"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".LoginActivity"
+            android:name="edu.ucsb.cs.mobile.npoon.mobshare.LoginActivity"
             android:label="Login"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".SignupActivity"
+            android:name="edu.ucsb.cs.mobile.npoon.mobshare.SignupActivity"
             android:label="Signup"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".MapsActivity"
+            android:name="edu.ucsb.cs.mobile.npoon.mobshare.MapsActivity"
             android:label="@string/title_activity_maps">
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name="edu.ucsb.cs.mobile.npoon.mobshare.MainActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme"
             android:label=" "

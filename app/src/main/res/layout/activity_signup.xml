@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/splash_background"
-    tools:context="edu.ucsb.cs.cs184.npoon.mobshare.SignupActivity">
+    tools:context="edu.ucsb.cs.mobile.npoon.mobshare.SignupActivity">
 
     <TextView
         android:text="mobshare"

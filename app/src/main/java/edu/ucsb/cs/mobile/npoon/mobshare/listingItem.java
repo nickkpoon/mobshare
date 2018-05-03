@@ -1,9 +1,8 @@
-package edu.ucsb.cs.cs184.npoon.mobshare;
+package edu.ucsb.cs.mobile.npoon.mobshare;
 
 import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
